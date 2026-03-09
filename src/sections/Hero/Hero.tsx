@@ -3,17 +3,17 @@ import { Shield, FileText, PieChart, Briefcase, CheckCircle2 } from 'lucide-reac
 
 const Hero: React.FC = () => {
     return (
-        <section className="relative overflow-hidden bg-white pt-8 md:pt-16 pb-16 md:pb-32">
+        <section className="relative overflow-hidden bg-white pt-4 md:pt-16 pb-10 md:pb-32">
             {/* Background Decorative Element */}
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-indigo-50 rounded-full blur-3xl opacity-50 -z-10" />
 
             <div className="max-w-[1720px] mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-2 gap-12 md:gap-16 items-center">
                 {/* Left Content */}
                 <div className="flex flex-col gap-6 md:gap-8 order-2 md:order-1">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-xs md:text-sm font-semibold w-fit">
+                    {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-xs md:text-sm font-semibold w-fit">
                         <Shield size={16} />
                         <span>Trusted by 10,000+ Businesses</span>
-                    </div>
+                    </div> */}
 
                     <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-900 leading-[1.2] lg:leading-[1.1]">
                         Grow Your <span className="text-indigo-600">Business</span> With Expert <span className="relative inline-block">
@@ -69,27 +69,27 @@ const Hero: React.FC = () => {
                             className="w-full h-auto relative z-10"
                         />
 
-                        {/* Floating Badges - Hidden on small mobile */}
+                        {/* Floating Badges - Hidden on mobile, adjusted for tablet/desktop */}
                         <div className="hidden sm:block">
                             <FloatingBadge
                                 icon={<Shield className="text-blue-600" size={20} />}
                                 label="Audit"
-                                className="top-5 md:top-10 -left-5 md:-left-10 animate-float-slow text-xs md:text-sm p-3 md:p-4"
+                                className="top-5 md:top-10 -left-2 md:-left-6 lg:-left-12 animate-float-slow text-[10px] md:text-sm p-2 md:p-4"
                             />
                             <FloatingBadge
                                 icon={<FileText className="text-indigo-600" size={20} />}
                                 label="GST"
-                                className="bottom-15 md:bottom-20 -left-10 md:-left-16 animate-float-delayed text-xs md:text-sm p-3 md:p-4"
+                                className="bottom-10 md:bottom-20 -left-4 md:-left-10 lg:-left-20 animate-float-delayed text-[10px] md:text-sm p-2 md:p-4"
                             />
                             <FloatingBadge
                                 icon={<PieChart className="text-pink-600" size={20} />}
                                 label="Accounting"
-                                className="top-20 md:top-32 -right-5 md:-right-8 animate-float text-xs md:text-sm p-3 md:p-4"
+                                className="top-10 md:top-32 -right-2 md:-right-6 lg:-right-12 animate-float text-[10px] md:text-sm p-2 md:p-4"
                             />
                             <FloatingBadge
                                 icon={<Briefcase className="text-orange-600" size={20} />}
                                 label="Finance"
-                                className="bottom-5 md:bottom-10 right-2 md:right-4 animate-float-slow text-xs md:text-sm p-3 md:p-4"
+                                className="bottom-5 md:bottom-10 right-0 md:right-4 lg:right-8 animate-float-slow text-[10px] md:text-sm p-2 md:p-4"
                             />
                         </div>
                     </div>

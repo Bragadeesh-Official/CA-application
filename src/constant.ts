@@ -1,5 +1,5 @@
 // COMPANY IDENTITY
-export const COMPANY_NAME = "COMPANY NAME";
+export const COMPANY_NAME = "T NAGARAJU & Co";
 export const COMPANY_EMAIL = "contact@companyname.com";
 export const COMPANY_PHONE = "+91 98765 43210";
 export const COMPANY_ADDRESS = "123 Business Square, Financial District, Kolkata, West Bengal 700001";

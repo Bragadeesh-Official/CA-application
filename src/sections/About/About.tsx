@@ -3,7 +3,7 @@ import * as constants from '../../constant';
 
 const About: React.FC = () => {
     return (
-        <section id="about" className="py-24 bg-gray-50/50 overflow-hidden">
+        <section id="about" className="py-12 bg-gray-50/50 overflow-hidden">
             <div className="max-w-[1720px] mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
                     {/* Left: Content */}
@@ -61,7 +61,7 @@ const About: React.FC = () => {
 const StatCard: React.FC<{ count: string; label: string }> = ({ count, label }) => (
     <div className="p-4 md:p-8 bg-white rounded-2xl md:rounded-3xl border border-gray-100 shadow-sm flex flex-col gap-1 md:gap-2 hover:border-indigo-200 transition-colors text-center md:text-left">
         <span className="text-2xl md:text-4xl font-bold text-indigo-600">{count}</span>
-        <span className="text-xs md:text-sm font-medium text-gray-500 whitespace-nowrap">{label}</span>
+        <span className="text-xs md:text-sm font-medium text-gray-500">{label}</span>
     </div>
 );
 

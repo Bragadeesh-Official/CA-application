@@ -4,8 +4,8 @@ import { COMPANY_EMAIL, COMPANY_PHONE, COMPANY_ADDRESS } from '../../constant';
 
 const Contact: React.FC = () => {
     return (
-        <section id="contact" className="py-24 bg-white">
-            <div className="max-w-[1720px] mx-auto px-10">
+        <section id="contact" className="py-12 bg-white">
+            <div className="max-w-[1720px] mx-auto px-6">
                 <div className="flex flex-col gap-12 md:gap-16">
                     {/* Section Header */}
                     <div className="flex flex-col gap-4 text-center max-w-2xl mx-auto px-4">
