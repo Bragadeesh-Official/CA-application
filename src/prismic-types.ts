@@ -99,6 +99,70 @@ export interface TeamDocumentDataSocialGroupItem {
 }
 
 /**
+ * Content for Tax-Compliance-detail documents
+ */
+export interface TaxComplianceDocumentData {
+  /**
+   * Tax and compilance group field in *Tax-Compliance-detail*
+   *
+   * - **Field Type**: Group
+   * - **API ID**: `tax_and_compilance_group`
+   */
+  tax_and_compilance_group: prismic.GroupField<
+    Simplify<TaxComplianceDocumentDataTaxAndCompilanceGroupItem>
+  >;
+}
+
+/**
+ * Item in *Tax-Compliance-detail* → `tax_and_compilance_group`
+ */
+export interface TaxComplianceDocumentDataTaxAndCompilanceGroupItem {
+  /**
+   * Due date field in *Tax-Compliance-detail* → `tax_and_compilance_group`
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: Pick the due date
+   * - **API ID**: `due_date`
+   */
+  due_date: prismic.DateField;
+
+  /**
+   * Act name field in *Tax-Compliance-detail* → `tax_and_compilance_group`
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter the Act name (eg: incometax)
+   * - **API ID**: `act_name`
+   */
+  act_name: prismic.KeyTextField;
+
+  /**
+   * Form resource field in *Tax-Compliance-detail* → `tax_and_compilance_group`
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter the name of the form or resource
+   * - **API ID**: `form_resource`
+   */
+  form_resource: prismic.KeyTextField;
+
+  /**
+   * Nature of compilance field in *Tax-Compliance-detail* → `tax_and_compilance_group`
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter the nature of compilance
+   * - **API ID**: `nature_of_compilance`
+   */
+  nature_of_compilance: prismic.KeyTextField;
+}
+
+/**
+ * Type for *Tax-Compliance-detail* documents
+ */
+export type TaxComplianceDocument = prismic.PrismicDocumentWithoutUID<
+  Simplify<TaxComplianceDocumentData>,
+  "tax-compliance-detail"
+>;
+
+/**
  * Type for *Team* documents
  */
 export type TeamDocument = prismic.PrismicDocumentWithoutUID<

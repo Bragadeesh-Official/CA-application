@@ -1,5 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Menu, X, ChevronDown, ChevronRight, ExternalLink } from 'lucide-react';
+import {
+  Menu,
+  X,
+  ChevronDown,
+  ChevronRight,
+  ExternalLink,
+  Calendar
+} from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { COMPANY_NAME } from '../../constant';
 
@@ -87,8 +94,8 @@ const Navbar: React.FC = () => {
   }, [location.pathname]);
 
   const knowledgeCategories: Category[] = [
-    { label: 'Bulletins', href: '/#knowledge-bank' },
-    { label: 'Utilities', href: '/#knowledge-bank' },
+    // { label: 'Bulletins', href: '/#knowledge-bank' },
+    // { label: 'Utilities', href: '/#knowledge-bank' },
     {
       label: 'Links',
       href: '/#knowledge-bank',
@@ -183,6 +190,14 @@ const Navbar: React.FC = () => {
           <NavRouterLink label="Home" to="/" />
           <NavLink label="About" onClick={() => handleNavClick('/#about')} />
           <NavLink label="Services" onClick={() => handleNavClick('/#services')} />
+          <NavRouterLink label="Team" to="/team" />
+          <Link
+            to="/calendar"
+            className="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors cursor-pointer"
+          >
+
+            Compliance Calendar
+          </Link>
 
           {/* Knowledge Bank Dropdown */}
           <div className="relative" ref={knowledgeRef}>
@@ -276,7 +291,6 @@ const Navbar: React.FC = () => {
             )}
           </div>
 
-          <NavRouterLink label="Team" to="/team" />
           <NavLink label="Connect Us" onClick={() => handleNavClick('/#contact')} />
         </div>
 
@@ -306,6 +320,7 @@ const Navbar: React.FC = () => {
             <MobileNavLink label="About" onClick={() => { handleNavClick('/#about'); toggleMenu(); }} />
             <MobileNavLink label="Services" onClick={() => { handleNavClick('/#services'); toggleMenu(); }} />
             <MobileNavRouterLink label="Team" to="/team" onClick={toggleMenu} />
+            <MobileNavRouterLink label="Compliance Calendar" to="/calendar" onClick={toggleMenu} />
             <MobileNavLink label="Connect Us" onClick={() => { handleNavClick('/#contact'); toggleMenu(); }} />
           </div>
 
@@ -354,8 +369,8 @@ const Navbar: React.FC = () => {
                                 }
                               }}
                               className={`w-full flex items-center justify-between px-4 py-3 text-sm font-semibold rounded-xl transition-all ${activeMobileSubMenu === sub.label
-                                  ? 'bg-white text-indigo-600 shadow-sm'
-                                  : 'text-gray-600 hover:bg-white/60'
+                                ? 'bg-white text-indigo-600 shadow-sm'
+                                : 'text-gray-600 hover:bg-white/60'
                                 }`}
                             >
                               {sub.label}

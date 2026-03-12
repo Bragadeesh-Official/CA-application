@@ -102,7 +102,7 @@ const Services: React.FC = () => {
     ];
 
     return (
-        <section id="services" className="py-12 bg-white overflow-hidden">
+        <section id="services" className="py-12  bg-white overflow-hidden">
             <div className="max-w-[1720px] mx-auto px-6">
                 <div className="flex flex-col items-center text-center gap-6 mb-16 md:mb-20 px-4">
                     <h2 className="text-indigo-600 font-bold tracking-widest uppercase text-xs md:text-sm">Comprehensive Expertise</h2>

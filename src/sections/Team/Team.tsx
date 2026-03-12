@@ -46,8 +46,7 @@ const Team: React.FC = () => {
                     <div className="grid grid-cols-1 gap-8 max-w-6xl mx-auto">
                         {teamDocuments.map((doc) => (
                             doc.data.team_detail_group.map((item, itemIndex) => {
-                                console.log("Team Member Item:", item); // Debugging contact info
-                                return (
+                               return (
                                     <div key={`${doc.id}-${itemIndex}`} className="w-full">
                                         <TeamMemberCard
                                             nameField={item.member_name}
