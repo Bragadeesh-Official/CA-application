@@ -4,10 +4,10 @@ import {
   X,
   ChevronDown,
   ChevronRight,
-  ExternalLink,
-  Calendar
+  ExternalLink
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import logo from '../../assets/image.png';
 import { COMPANY_NAME } from '../../constant';
 
 interface SubItem {
@@ -107,71 +107,71 @@ const Navbar: React.FC = () => {
         { label: 'Ease Of Doing Business', href: '/resources/ease-of-doing-business' },
       ]
     },
-    {
-      label: 'Acts',
-      href: '/#knowledge-bank',
-      hasSubmenu: true,
-      subItems: [
-        { label: 'Direct Tax', href: '/#knowledge-bank' },
-        { label: 'Indirect Tax', href: '/#knowledge-bank' },
-        { label: 'Corporate Laws', href: '/#knowledge-bank' },
-        { label: 'VAT Laws', href: '/#knowledge-bank' },
-        { label: 'Other Statutes', href: '/#knowledge-bank' },
-        { label: 'GST Laws', href: '/#knowledge-bank' },
-      ]
-    },
-    {
-      label: 'Rules',
-      href: '/#knowledge-bank',
-      hasSubmenu: true,
-      subItems: [
-        { label: 'Direct Tax Rules', href: '/#knowledge-bank' },
-        { label: 'Indirect Tax Rules', href: '/#knowledge-bank' },
-        { label: 'Corporate Laws Rules', href: '/#knowledge-bank' },
-        { label: 'VAT Laws Rules', href: '/#knowledge-bank' },
-        { label: 'Other Statutes', href: '/#knowledge-bank' },
-        { label: 'GST Rules', href: '/#knowledge-bank' },
-      ]
-    },
-    {
-      label: 'Forms',
-      href: '/#knowledge-bank',
-      hasSubmenu: true,
-      subItems: [
-        { label: 'Income Tax Forms', href: '/#knowledge-bank' },
-        { label: 'ROC Forms (Cos Act, 2013)', href: '/#knowledge-bank' },
-        { label: 'ROC Forms (Cos Act, 1956)', href: '/#knowledge-bank' },
-        { label: 'Income Declaration Forms', href: '/#knowledge-bank' },
-        { label: 'Wealth Tax Forms', href: '/#knowledge-bank' },
-        { label: 'Service Tax Forms', href: '/#knowledge-bank' },
-        { label: 'Companies Unpaid Dividend Forms', href: '/#knowledge-bank' },
-        { label: 'NBFCs Forms', href: '/#knowledge-bank' },
-        { label: 'LLP Winding up', href: '/#knowledge-bank' },
-        { label: 'FEMA Forms', href: '/#knowledge-bank' },
-        { label: 'LLP Forms', href: '/#knowledge-bank' },
-        {
-          label: 'CGST Forms',
-          href: '/#knowledge-bank',
-          subItems: [
-            { label: 'Accounts and Records', href: '/#knowledge-bank' },
-            { label: 'GST Forms', href: '/#knowledge-bank' },
-            { label: 'Advance Ruling', href: '/#knowledge-bank' },
-            { label: 'Appeals and Revision', href: '/#knowledge-bank' },
-            { label: 'Assessment and Audit', href: '/#knowledge-bank' },
-            { label: 'Composition', href: '/#knowledge-bank' },
-            { label: 'Demands and Recovery', href: '/#knowledge-bank' },
-            { label: 'Input Tax Credit', href: '/#knowledge-bank' },
-            { label: 'Inspection, Search and Seizure', href: '/#knowledge-bank' },
-            { label: 'Offences and Penalties', href: '/#knowledge-bank' },
-            { label: 'Payment of Tax', href: '/#knowledge-bank' },
-            { label: 'Refund', href: '/#knowledge-bank' },
-            { label: 'Registration', href: '/#knowledge-bank' },
-            { label: 'Returns', href: '/#knowledge-bank' },
-            { label: 'Transitional Provisions', href: '/#knowledge-bank' },
-          ]
-        },
-      ]
-    },
+    // {
+    //   label: 'Acts',
+    //   href: '/#knowledge-bank',
+    //   hasSubmenu: true,
+    //   subItems: [
+    //     { label: 'Direct Tax', href: '/#knowledge-bank' },
+    //     { label: 'Indirect Tax', href: '/#knowledge-bank' },
+    //     { label: 'Corporate Laws', href: '/#knowledge-bank' },
+    //     { label: 'VAT Laws', href: '/#knowledge-bank' },
+    //     { label: 'Other Statutes', href: '/#knowledge-bank' },
+    //     { label: 'GST Laws', href: '/#knowledge-bank' },
+    //   ]
+    // },
+    // {
+    //   label: 'Rules',
+    //   href: '/#knowledge-bank',
+    //   hasSubmenu: true,
+    //   subItems: [
+    //     { label: 'Direct Tax Rules', href: '/#knowledge-bank' },
+    //     { label: 'Indirect Tax Rules', href: '/#knowledge-bank' },
+    //     { label: 'Corporate Laws Rules', href: '/#knowledge-bank' },
+    //     { label: 'VAT Laws Rules', href: '/#knowledge-bank' },
+    //     { label: 'Other Statutes', href: '/#knowledge-bank' },
+    //     { label: 'GST Rules', href: '/#knowledge-bank' },
+    //   ]
+    // },
+    // {
+    //   label: 'Forms',
+    //   href: '/#knowledge-bank',
+    //   hasSubmenu: true,
+    //   subItems: [
+    //     { label: 'Income Tax Forms', href: '/#knowledge-bank' },
+    //     { label: 'ROC Forms (Cos Act, 2013)', href: '/#knowledge-bank' },
+    //     { label: 'ROC Forms (Cos Act, 1956)', href: '/#knowledge-bank' },
+    //     { label: 'Income Declaration Forms', href: '/#knowledge-bank' },
+    //     { label: 'Wealth Tax Forms', href: '/#knowledge-bank' },
+    //     { label: 'Service Tax Forms', href: '/#knowledge-bank' },
+    //     { label: 'Companies Unpaid Dividend Forms', href: '/#knowledge-bank' },
+    //     { label: 'NBFCs Forms', href: '/#knowledge-bank' },
+    //     { label: 'LLP Winding up', href: '/#knowledge-bank' },
+    //     { label: 'FEMA Forms', href: '/#knowledge-bank' },
+    //     { label: 'LLP Forms', href: '/#knowledge-bank' },
+    //     {
+    //       label: 'CGST Forms',
+    //       href: '/#knowledge-bank',
+    //       subItems: [
+    //         { label: 'Accounts and Records', href: '/#knowledge-bank' },
+    //         { label: 'GST Forms', href: '/#knowledge-bank' },
+    //         { label: 'Advance Ruling', href: '/#knowledge-bank' },
+    //         { label: 'Appeals and Revision', href: '/#knowledge-bank' },
+    //         { label: 'Assessment and Audit', href: '/#knowledge-bank' },
+    //         { label: 'Composition', href: '/#knowledge-bank' },
+    //         { label: 'Demands and Recovery', href: '/#knowledge-bank' },
+    //         { label: 'Input Tax Credit', href: '/#knowledge-bank' },
+    //         { label: 'Inspection, Search and Seizure', href: '/#knowledge-bank' },
+    //         { label: 'Offences and Penalties', href: '/#knowledge-bank' },
+    //         { label: 'Payment of Tax', href: '/#knowledge-bank' },
+    //         { label: 'Refund', href: '/#knowledge-bank' },
+    //         { label: 'Registration', href: '/#knowledge-bank' },
+    //         { label: 'Returns', href: '/#knowledge-bank' },
+    //         { label: 'Transitional Provisions', href: '/#knowledge-bank' },
+    //       ]
+    //     },
+    //   ]
+    // },
   ];
 
   return (
@@ -179,7 +179,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-[1720px] mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 md:gap-3">
-          <img src="/src/assets/image.png" alt="Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+          <img src={logo} alt="Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
           <span className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight whitespace-nowrap">
             {COMPANY_NAME}<span className="text-indigo-600">.</span>
           </span>
@@ -444,7 +444,7 @@ const NavRouterLink: React.FC<{ label: string; to: string }> = ({ label, to }) =
 const MobileNavLink: React.FC<{ label: string; onClick: () => void }> = ({ label, onClick }) => (
   <button
     onClick={onClick}
-    className="text-2xl font-bold text-gray-900 hover:text-indigo-600 transition-colors text-left"
+    className="text-md text-gray-900 hover:text-indigo-600 transition-colors text-left"
   >
     {label}
   </button>
@@ -454,7 +454,7 @@ const MobileNavRouterLink: React.FC<{ label: string; to: string; onClick: () => 
   <Link
     to={to}
     onClick={onClick}
-    className="text-2xl font-bold text-gray-900 hover:text-indigo-600 transition-colors"
+    className="text-md text-gray-900 hover:text-indigo-600 transition-colors"
   >
     {label}
   </Link>

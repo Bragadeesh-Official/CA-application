@@ -6,7 +6,6 @@ import {
     ChevronLeft,
     ChevronRight,
     FileText,
-    FileSpreadsheet,
     Download,
     Calendar,
     X
@@ -124,8 +123,62 @@ const CalendarPage: React.FC = () => {
         setCurrentPage(1);
     }, [searchTerm, categoryFilter, itemsPerPage, startDate, endDate]);
 
+    const handleExport = (type: 'PDF' | 'CSV') => {
+        if (type === 'PDF') {
+            window.print();
+            return;
+        }
+
+        const headers = ['Due Date', 'Act', 'Form / Resource', 'Nature of Compliance'];
+        const rows = allFilteredEvents.map(event => [
+            `"${event.date}"`,
+            `"${event.act}"`,
+            `"${event.form}"`,
+            `"${event.obligation.replace(/"/g, '""')}"`
+        ]);
+
+        const content = [headers, ...rows].map(e => e.join(",")).join("\n");
+        const blob = new Blob([content], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", `compliance_calendar_${new Date().toISOString().split('T')[0]}.csv`);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <div className="min-h-screen bg-white pb-12 text-sm">
+            <style>
+                {`
+                @media print {
+                    nav, .xl\\:flex-row, .mt-6, .mt-8, .pt-8 h1 p, .text-right {
+                        display: none !important;
+                    }
+                    .max-w-\\[1440px\\] {
+                        max-width: 100% !important;
+                        padding: 0 !important;
+                        margin: 0 !important;
+                    }
+                    table {
+                        width: 100% !important;
+                        border-collapse: collapse !important;
+                    }
+                    th, td {
+                        border: 1px solid #e2e8f0 !important;
+                        padding: 8px !important;
+                        font-size: 10px !important;
+                    }
+                    th {
+                        background-color: #4f46e5 !important;
+                        color: white !important;
+                        -webkit-print-color-adjust: exact;
+                    }
+                }
+                `}
+            </style>
             <div className="max-w-[1440px] mx-auto px-4 md:px-8 pt-8">
 
                 {/* Section Header */}
@@ -378,9 +431,8 @@ const CalendarPage: React.FC = () => {
                     </div>
 
                     <div className="flex items-center gap-3">
-                        <ExportButton icon={<FileText size={16} />} label="PDF" />
-                        <ExportButton icon={<FileSpreadsheet size={16} />} label="Excel" />
-                        <ExportButton icon={<Download size={16} />} label="CSV" />
+                        <ExportButton icon={<FileText size={16} />} label="PDF" onClick={() => handleExport('PDF')} />
+                        <ExportButton icon={<Download size={16} />} label="CSV" onClick={() => handleExport('CSV')} />
                     </div>
                 </div>
 
@@ -397,8 +449,11 @@ const CalendarPage: React.FC = () => {
     );
 };
 
-const ExportButton: React.FC<{ icon: React.ReactNode, label: string }> = ({ icon, label }) => (
-    <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-xs font-bold text-gray-700 hover:border-indigo-500 hover:text-indigo-600 hover:bg-indigo-50/50 transition-all active:scale-95 shadow-sm group">
+const ExportButton: React.FC<{ icon: React.ReactNode, label: string, onClick?: () => void }> = ({ icon, label, onClick }) => (
+    <button
+        onClick={onClick}
+        className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-xs font-bold text-gray-700 hover:border-indigo-500 hover:text-indigo-600 hover:bg-indigo-50/50 transition-all active:scale-95 shadow-sm group"
+    >
         <span className="text-gray-400 group-hover:text-indigo-500 transition-colors">{icon}</span>
         {label}
     </button>

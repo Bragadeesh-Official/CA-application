@@ -1,8 +1,8 @@
 // COMPANY IDENTITY
 export const COMPANY_NAME = "T NAGARAJU & Co";
-export const COMPANY_EMAIL = "contact@companyname.com";
-export const COMPANY_PHONE = "+91 98765 43210";
-export const COMPANY_ADDRESS = "123 Business Square, Financial District, Kolkata, West Bengal 700001";
+export const COMPANY_EMAIL = "canagarajut@gmail.com";
+export const COMPANY_PHONE = "+91 98424 68206";
+export const COMPANY_ADDRESS = "14, Kondasamy Nagar, Peelamedu, Coimbatore - 641004";
 
 // HOME PAGE
 export const HOME_ABOUT_1 =

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Team from '../sections/Team/Team';
-import Contact from '../sections/Contact/Contact';
 
 const TeamPage: React.FC = () => {
     // Scroll to top on mount

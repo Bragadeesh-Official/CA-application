@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { User, Mail, Phone, Linkedin, Twitter } from 'lucide-react';
+import { User, Mail, Phone, Linkedin, Twitter, Loader2 } from 'lucide-react';
 import * as constants from '../../constant';
 import { createClient } from '../../prismicio';
 import type { TeamDocument } from '../../prismic-types';
@@ -8,6 +8,7 @@ import { PrismicText, PrismicRichText } from '@prismicio/react';
 
 const Team: React.FC = () => {
     const [teamDocuments, setTeamDocuments] = useState<TeamDocument[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchTeam = async () => {
@@ -17,6 +18,8 @@ const Team: React.FC = () => {
                 setTeamDocuments(response);
             } catch (error) {
                 console.error("Error fetching team from Prismic:", error);
+            } finally {
+                setIsLoading(false);
             }
         };
 
@@ -43,27 +46,32 @@ const Team: React.FC = () => {
                     {/* Background Decoration */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-100 rounded-full blur-3xl opacity-20 -z-10" />
 
-                    <div className="grid grid-cols-1 gap-8 max-w-6xl mx-auto">
-                        {teamDocuments.map((doc) => (
-                            doc.data.team_detail_group.map((item, itemIndex) => {
-                               return (
-                                    <div key={`${doc.id}-${itemIndex}`} className="w-full">
-                                        <TeamMemberCard
-                                            nameField={item.member_name}
-                                            roleField={item.member_designation}
-                                            image={item.member_picture?.url || ""}
-                                            descriptionField={item.member_details}
-                                            email={item.member_mail_id}
-                                            mobile={item.member_mobile_number}
-                                            socials={item.social_group}
-                                        />
-                                    </div>
-                                );
-                            })
-                        ))}
-                    </div>
-
-                    {teamDocuments.length === 0 && (
+                    {isLoading ? (
+                        <div className="flex flex-col items-center justify-center py-32 gap-4">
+                            <Loader2 className="w-12 h-12 text-indigo-600 animate-spin" />
+                            <p className="text-gray-500 font-medium animate-pulse">Loading team members...</p>
+                        </div>
+                    ) : teamDocuments.length > 0 ? (
+                        <div className="grid grid-cols-1 gap-8 max-w-6xl mx-auto">
+                            {teamDocuments.map((doc) => (
+                                doc.data.team_detail_group.map((item, itemIndex) => {
+                                   return (
+                                        <div key={`${doc.id}-${itemIndex}`} className="w-full">
+                                            <TeamMemberCard
+                                                nameField={item.member_name}
+                                                roleField={item.member_designation}
+                                                image={item.member_picture?.url || ""}
+                                                descriptionField={item.member_details}
+                                                email={item.member_mail_id}
+                                                mobile={item.member_mobile_number}
+                                                socials={item.social_group}
+                                            />
+                                        </div>
+                                    );
+                                })
+                            ))}
+                        </div>
+                    ) : (
                         <div className="text-center py-20">
                             <p className="text-gray-500 italic text-lg">No team members found.</p>
                         </div>

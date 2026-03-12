@@ -1,5 +1,6 @@
 import React from 'react';
 import { Shield, FileText, PieChart, Briefcase, CheckCircle2 } from 'lucide-react';
+import heroImage from '../../assets/4999653.jpg';
 
 const Hero: React.FC = () => {
     return (
@@ -64,7 +65,7 @@ const Hero: React.FC = () => {
                     <div className="relative w-full max-w-[500px] md:max-w-none lg:max-w-[900px]">
                         {/* Main Hero Image */}
                         <img
-                            src="/src/assets/4999653.jpg"
+                            src={heroImage}
                             alt="Professional CA"
                             className="w-full h-auto relative z-10"
                         />

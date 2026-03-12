@@ -1,24 +1,61 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import logo from '../../assets/image.png';
 import { COMPANY_NAME, COMPANY_EMAIL, COMPANY_PHONE, COMPANY_ADDRESS } from '../../constant';
 
 const Footer: React.FC = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const scrollToAnchor = (hash: string) => {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+            const offset = 80;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    const handleNavClick = (href: string) => {
+        const [path, hash] = href.split('/#');
+        const targetPath = path || '/';
+        const targetHash = hash ? `#${hash}` : '';
+
+        if (location.pathname === targetPath && targetHash) {
+            scrollToAnchor(targetHash);
+        } else {
+            navigate(targetPath + targetHash);
+            if (targetHash) {
+                setTimeout(() => scrollToAnchor(targetHash), 100);
+            } else {
+                window.scrollTo(0, 0);
+            }
+        }
+    };
+
     return (
         <footer className="bg-[#0f172a] text-gray-400 py-20">
             <div className="max-w-[1720px] mx-auto px-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Company Bio */}
                     <div className="flex flex-col gap-6 text-center sm:text-left items-center sm:items-start">
-                        <div className="flex items-center gap-2">
-                            <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
-                                <span className="text-white font-bold text-xl uppercase">CA</span>
-                            </div>
+                        <Link to="/" className="flex items-center gap-2" onClick={() => window.scrollTo(0, 0)}>
+                            <img src={logo} alt="Logo" className="w-10 h-10 object-contain" />
                             <span className="text-xl md:text-2xl font-bold text-white tracking-tight uppercase whitespace-nowrap">
                                 {COMPANY_NAME}<span className="text-indigo-500">.</span>
                             </span>
-                        </div>
+                        </Link>
                         <p className="text-sm leading-relaxed max-w-xs">
-                            Professional chartered accountancy firm rendering comprehensive professional services including audit, management consultancy, and tax consultancy since 1982.
+                            Professional chartered accountancy firm rendering comprehensive professional services including audit, management consultancy, and tax advisory since 1982.
                         </p>
                         <div className="flex gap-4">
                             <SocialLink icon={<Facebook size={18} />} />
@@ -32,23 +69,28 @@ const Footer: React.FC = () => {
                     <div className="flex flex-col gap-6 text-center sm:text-left">
                         <h4 className="text-white font-bold text-lg">Quick Links</h4>
                         <ul className="flex flex-col gap-4 text-sm">
-                            <li><FooterLink href="#about" label="About Us" /></li>
-                            <li><FooterLink href="#services" label="Our Services" /></li>
-                            <li><FooterLink href="#team" label="Meet the Team" /></li>
-                            <li><FooterLink href="#contact" label="Book Consultation" /></li>
-                            <li><FooterLink href="#careers" label="Careers" /></li>
+                            <li><FooterLink onClick={() => handleNavClick('/')} label="Home" /></li>
+                            <li><FooterLink onClick={() => handleNavClick('/#about')} label="About Us" /></li>
+                            <li><FooterLink onClick={() => handleNavClick('/#services')} label="Our Services" /></li>
+                            <li><FooterLink onClick={() => handleNavClick('/#contact')} label="Connect Us" /></li>
                         </ul>
                     </div>
 
-                    {/* Services */}
+                    {/* Resources */}
                     <div className="flex flex-col gap-6 text-center sm:text-left">
-                        <h4 className="text-white font-bold text-lg">Services</h4>
+                        <h4 className="text-white font-bold text-lg">Pages</h4>
                         <ul className="flex flex-col gap-4 text-sm">
-                            <li><FooterLink href="#audit" label="Audit & Assurance" /></li>
-                            <li><FooterLink href="#tax" label="Tax Consultancy" /></li>
-                            <li><FooterLink href="#gst" label="GST Management" /></li>
-                            <li><FooterLink href="#corporate" label="Corporate Services" /></li>
-                            <li><FooterLink href="#payroll" label="Payroll Processing" /></li>
+                            <li>
+                                <Link to="/team" className="hover:text-indigo-400 transition-colors" onClick={() => window.scrollTo(0, 0)}>
+                                    Meet the Team
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/calendar" className="hover:text-indigo-400 transition-colors" onClick={() => window.scrollTo(0, 0)}>
+                                    Compliance Calendar
+                                </Link>
+                            </li>
+                            <li><FooterLink onClick={() => handleNavClick('/#contact')} label="Book Consultation" /></li>
                         </ul>
                     </div>
 
@@ -74,19 +116,14 @@ const Footer: React.FC = () => {
 
                 <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-medium text-center md:text-left text-gray-500">
                     <p>© 2026 {COMPANY_NAME}. All rights reserved.</p>
-                    <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-                        <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
-                    </div>
                 </div>
             </div>
         </footer>
     );
 };
 
-const FooterLink: React.FC<{ href: string; label: string }> = ({ href, label }) => (
-    <a href={href} className="hover:text-indigo-400 transition-colors">{label}</a>
+const FooterLink: React.FC<{ onClick: () => void; label: string }> = ({ onClick, label }) => (
+    <button onClick={onClick} className="hover:text-indigo-400 transition-colors text-left">{label}</button>
 );
 
 const SocialLink: React.FC<{ icon: React.ReactNode }> = ({ icon }) => (
