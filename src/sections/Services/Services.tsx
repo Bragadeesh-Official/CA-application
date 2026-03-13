@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IndianRupee, ShieldCheck, Landmark, Building2, Users, FileSearch, Shield, X, CheckCircle2 } from 'lucide-react';
+import { IndianRupee, ShieldCheck, Landmark, Building2, FileSearch, Shield, X, CheckCircle2 } from 'lucide-react';
 import * as constants from '../../constant';
 
 interface Service {
@@ -36,7 +36,7 @@ const Services: React.FC = () => {
             color: "indigo"
         },
         {
-            title: "GST Management",
+            title: "GST",
             description: constants.GST_SERVICES.join(', '),
             fullList: constants.GST_SERVICES,
             icon: <IndianRupee className="text-blue-600" />,
@@ -79,13 +79,6 @@ const Services: React.FC = () => {
             color: "emerald"
         },
         {
-            title: "Payroll Management",
-            description: constants.PAYROLL_SERVICES.join(', '),
-            fullList: constants.PAYROLL_SERVICES,
-            icon: <Users className="text-orange-600" />,
-            color: "orange"
-        },
-        {
             title: "TDS Compliance",
             description: constants.TDS_SERVICES.join(', '),
             fullList: constants.TDS_SERVICES,
@@ -93,7 +86,7 @@ const Services: React.FC = () => {
             color: "indigo"
         },
         {
-            title: "Accounting Services",
+            title: "Virtual CFO Services",
             description: constants.ACCOUNTING_SERVICES.join(', '),
             fullList: constants.ACCOUNTING_SERVICES,
             icon: <FileSearch className="text-cyan-600" />,
@@ -107,7 +100,7 @@ const Services: React.FC = () => {
                 <div className="flex flex-col items-center text-center gap-6 mb-16 md:mb-20 px-4">
                     <h2 className="text-indigo-600 font-bold tracking-widest uppercase text-xs md:text-sm">Comprehensive Expertise</h2>
                     <h3 className="text-3xl md:text-4xl lg:text-6xl font-bold text-gray-900 leading-tight max-w-4xl">
-                        Professional Solutions for Your <span className="text-indigo-600">Financial Growth</span>
+                        Professional Solutions
                     </h3>
                     <p className="text-base md:text-xl text-gray-600 max-w-2xl">
                         We offer a wide range of specialized services tailored to meet the contemporary needs of our diverse clientele.

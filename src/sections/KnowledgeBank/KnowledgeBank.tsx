@@ -93,7 +93,7 @@ const KnowledgeBank: React.FC = () => {
                         <div className="flex flex-col gap-6 max-w-2xl text-center md:text-left">
                             <h4 className="text-3xl md:text-4xl font-bold leading-tight">Need specific professional guidance?</h4>
                             <p className="text-indigo-100 text-lg md:text-xl">
-                                Our experts are here to help you navigate complex financial regulations and compliance requirements.
+                                Our qualified professionals are here to help you navigate complex financial regulations and compliance requirements.
                             </p>
                         </div>
                         <button

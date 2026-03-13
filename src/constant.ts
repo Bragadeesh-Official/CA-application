@@ -19,13 +19,13 @@ export const HOME_ABOUT_4 =
 
 // TEAM
 export const TEAM_DESCRIPTION =
-    "Our dedicated team comprises of competent people with extensive knowledge and experience. Our professionalism and expertise helps us to service our clients to their satisfaction. Some of the key members of our firm are:";
+    "Our dedicated team comprises of competent people with extensive knowledge and experience. Our professionalism and dedication helps us to service our clients to their satisfaction. Some of the key members of our firm are:";
 
 export const TEAM_MEMBER_1_DESCRIPTION =
     "Fellow Chartered Accountant, Commerce Graduate. He has vast experience in consultancy of direct taxes and handling corporate affairs in different areas.";
 
 export const TEAM_MEMBER_2_DESCRIPTION =
-    "Member of the Institute of Chartered Accountants of India (ICAI). Expertise in complex direct tax assessments and corporate law compliance.";
+    "Member of the Institute of Chartered Accountants of India (ICAI). Specialized in complex direct tax assessments and corporate law compliance.";
 
 // SERVICES - TAX DEDUCTED AT SOURCE (TDS)
 export const TDS_SERVICES = [
@@ -72,18 +72,6 @@ export const NON_RESIDENT_SERVICES = [
     "Making application to RBI for various matters including sale and purchase of residential and commercial properties."
 ];
 
-// PAYROLL
-export const PAYROLL_SERVICES = [
-    "Preparation of Monthly Salary Sheet.",
-    "Deductions as per applicable laws like Income Tax, Provident Fund, and Professional Tax etc.",
-    "Computation and deposit of TDS, ESI, PF etc.",
-    "Disbursement/ Online Payment of Salary.",
-    "Pay slip by password protected e-mail.",
-    "Reimbursement of telephone, medical bills etc.",
-    "Issue of Form 16 to employees.",
-    "Periodic Reconciliation of payments/statutory deductions etc. with books of accounts.",
-    "Administration of gratuity, superannuation, pension schemes etc."
-];
 
 // BENEFITS OF OUTSOURCING
 export const OUTSOURCING_BENEFITS = [
@@ -91,7 +79,7 @@ export const OUTSOURCING_BENEFITS = [
     "Use of manpower for more important functions",
     "Investment in fixed assets reduced/minimized.",
     "Substantial Savings in Cost.",
-    "Services of experts made available.",
+    "Professional services made available.",
     "Improved Internal Controls",
     "Enhanced reporting capabilities to provide more timely and accurate financial data",
     "Off-site Backup of Data."
@@ -177,7 +165,7 @@ export const INCOME_TAX_SERVICES = [
     "Advance tax estimation and deposit.",
     "Filing Income Tax and Wealth Tax returns.",
     "Liaison with Income tax department for refunds and assessments.",
-    "Expertise in complicated direct tax assessments.",
+    "Experience in complicated direct tax assessments.",
     "Filing and pleading appeals.",
     "DTAA related issues and FEMA settlement."
 ];

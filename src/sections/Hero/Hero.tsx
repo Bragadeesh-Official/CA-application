@@ -1,112 +1,83 @@
-import React from 'react';
-import { Shield, FileText, PieChart, Briefcase, CheckCircle2 } from 'lucide-react';
-import heroImage from '../../assets/4999653.jpg';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import hero1 from '../../assets/hero-1.jpg';
+import hero2 from '../../assets/hero-2.jpg';
+import hero3 from '../../assets/hero-3.jpg';
 
 const Hero: React.FC = () => {
+    const navigate = useNavigate();
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const images = [hero1, hero2, hero3];
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 5000); // Change image every 5 seconds
+
+        return () => clearInterval(timer);
+    }, [images.length]);
+
     return (
-        <section className="relative overflow-hidden bg-white pt-4 md:pt-16 pb-10 md:pb-32">
-            {/* Background Decorative Element */}
-            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-indigo-50 rounded-full blur-3xl opacity-50 -z-10" />
+        <section className="relative h-[50vh] md:h-[60vh] flex items-center overflow-hidden">
+            {/* Carousel Background */}
+            <div className="absolute inset-0 z-0">
+                {images.map((img, index) => (
+                    <div
+                        key={index}
+                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentIndex ? 'opacity-100' : 'opacity-0'
+                            }`}
+                    >
+                        <img
+                            src={img}
+                            alt={`Slide ${index + 1}`}
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                ))}
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-black/50 lg:bg-gradient-to-r lg:from-black/80 lg:to-black/20" />
+            </div>
 
-            <div className="max-w-[1720px] mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-2 gap-12 md:gap-16 items-center">
-                {/* Left Content */}
-                <div className="flex flex-col gap-6 md:gap-8 order-2 md:order-1">
-                    {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-700 rounded-full text-xs md:text-sm font-semibold w-fit">
-                        <Shield size={16} />
-                        <span>Trusted by 10,000+ Businesses</span>
-                    </div> */}
-
-                    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-900 leading-[1.2] lg:leading-[1.1]">
-                        Grow Your <span className="text-indigo-600">Business</span> With Expert <span className="relative inline-block">
-                            CA Advice
-                            <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 100 10" preserveAspectRatio="none">
-                                <path d="M0 5 Q 50 10 100 5" stroke="#4f46e5" strokeWidth="3" fill="transparent" />
-                            </svg>
-                        </span>
+            <div className="max-w-[1720px] mx-auto px-6 relative z-10 w-full">
+                <div className="max-w-3xl flex flex-col gap-6 md:gap-8 animate-in fade-in slide-in-from-left-8 duration-1000">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold !text-white leading-tight">
+                        Financial Advisory & Services
                     </h1>
 
-                    <p className="text-lg md:text-xl text-gray-600 max-w-xl leading-relaxed">
-                        Professional chartered accountancy services including audit, management consultancy, and tax advisory since 1982.
+                    <p className="text-lg md:text-xl !text-white max-w-xl leading-relaxed">
+                        Over 40 years of experience finding comprehensive solutions for businesses and individuals since 1982.
                     </p>
-
-                    <div className="flex flex-col gap-4">
-                        <div className="flex items-center gap-3 text-gray-700 font-medium text-sm md:text-base">
-                            <CheckCircle2 className="text-green-500" size={20} />
-                            <span>Expert Audit & Assurance Services</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-gray-700 font-medium text-sm md:text-base">
-                            <CheckCircle2 className="text-green-500" size={20} />
-                            <span>Comprehensive Tax Consultancy</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-gray-700 font-medium text-sm md:text-base">
-                            <CheckCircle2 className="text-green-500" size={20} />
-                            <span>Corporate Financial Planning</span>
-                        </div>
-                    </div>
 
                     <div className="flex flex-wrap gap-4 pt-4">
                         <button
-                            onClick={() => window.location.href = '#services'}
-                            className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-100 active:scale-95"
+                            onClick={() => navigate('/services')}
+                            className="px-8 py-4 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-500/20 active:scale-95 text-sm uppercase tracking-wider"
                         >
                             Explore Services
                         </button>
                         <button
-                            onClick={() => window.location.href = '#about'}
-                            className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white text-gray-900 font-bold rounded-2xl border-2 border-gray-100 hover:border-indigo-600 hover:text-indigo-600 transition-all active:scale-95"
+                            onClick={() => navigate('/contact')}
+                            className="px-8 py-4 bg-transparent text-white font-bold rounded-lg border-2 border-white hover:bg-white/10 transition-all active:scale-95 text-sm uppercase tracking-wider"
                         >
-                            Learn More
+                            Contact Us
                         </button>
                     </div>
-                </div>
 
-                {/* Right Image with Floating Icons */}
-                <div className="relative order-1 md:order-2 flex justify-center items-center">
-                    <div className="relative w-full max-w-[500px] md:max-w-none lg:max-w-[900px]">
-                        {/* Main Hero Image */}
-                        <img
-                            src={heroImage}
-                            alt="Professional CA"
-                            className="w-full h-auto relative z-10"
-                        />
-
-                        {/* Floating Badges - Hidden on mobile, adjusted for tablet/desktop */}
-                        <div className="hidden sm:block">
-                            <FloatingBadge
-                                icon={<Shield className="text-blue-600" size={20} />}
-                                label="Audit"
-                                className="top-5 md:top-10 -left-2 md:-left-6 lg:-left-12 animate-float-slow text-[10px] md:text-sm p-2 md:p-4"
+                    {/* Carousel Indicators */}
+                    <div className="flex gap-2 mt-8">
+                        {images.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setCurrentIndex(index)}
+                                className={`h-1.5 rounded-full transition-all duration-300 ${index === currentIndex ? 'w-8 bg-indigo-500' : 'w-2 bg-white/50 hover:bg-white'
+                                    }`}
                             />
-                            <FloatingBadge
-                                icon={<FileText className="text-indigo-600" size={20} />}
-                                label="GST"
-                                className="bottom-10 md:bottom-20 -left-4 md:-left-10 lg:-left-20 animate-float-delayed text-[10px] md:text-sm p-2 md:p-4"
-                            />
-                            <FloatingBadge
-                                icon={<PieChart className="text-pink-600" size={20} />}
-                                label="Accounting"
-                                className="top-10 md:top-32 -right-2 md:-right-6 lg:-right-12 animate-float text-[10px] md:text-sm p-2 md:p-4"
-                            />
-                            <FloatingBadge
-                                icon={<Briefcase className="text-orange-600" size={20} />}
-                                label="Finance"
-                                className="bottom-5 md:bottom-10 right-0 md:right-4 lg:right-8 animate-float-slow text-[10px] md:text-sm p-2 md:p-4"
-                            />
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
         </section>
     );
 };
-
-const FloatingBadge: React.FC<{ icon: React.ReactNode; label: string; className?: string }> = ({ icon, label, className }) => (
-    <div className={`absolute z-20 bg-white p-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-gray-50 transition-transform hover:scale-110 cursor-pointer ${className}`}>
-        <div className="p-2 bg-gray-50 rounded-lg">
-            {icon}
-        </div>
-        <span className="font-bold text-gray-900 pr-2">{label}</span>
-    </div>
-);
 
 export default Hero;
