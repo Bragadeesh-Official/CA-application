@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IndianRupee, ShieldCheck, Landmark, Building2, Users, FileSearch, Shield, X, CheckCircle2 } from 'lucide-react';
+import { IndianRupee, ShieldCheck, Landmark, Building2, FileSearch, Shield, X, CheckCircle2 } from 'lucide-react';
 import * as constants from '../../constant';
 
 interface Service {
@@ -32,11 +32,11 @@ const Services: React.FC = () => {
             description: constants.AUDIT_DESCRIPTION,
             types: constants.AUDIT_TYPES.join(', '),
             fullList: [...constants.AUDIT_TYPES, ...constants.AUDIT_SERVICES],
-            icon: <ShieldCheck className="text-indigo-600" />,
-            color: "indigo"
+            icon: <ShieldCheck className="text-blue-950" />,
+            color: "blue-950"
         },
         {
-            title: "GST Management",
+            title: "GST",
             description: constants.GST_SERVICES.join(', '),
             fullList: constants.GST_SERVICES,
             icon: <IndianRupee className="text-blue-600" />,
@@ -79,21 +79,14 @@ const Services: React.FC = () => {
             color: "emerald"
         },
         {
-            title: "Payroll Management",
-            description: constants.PAYROLL_SERVICES.join(', '),
-            fullList: constants.PAYROLL_SERVICES,
-            icon: <Users className="text-orange-600" />,
-            color: "orange"
-        },
-        {
             title: "TDS Compliance",
             description: constants.TDS_SERVICES.join(', '),
             fullList: constants.TDS_SERVICES,
-            icon: <FileSearch className="text-indigo-600" />,
-            color: "indigo"
+            icon: <FileSearch className="text-blue-950" />,
+            color: "blue-950"
         },
         {
-            title: "Accounting Services",
+            title: "Virtual CFO Services",
             description: constants.ACCOUNTING_SERVICES.join(', '),
             fullList: constants.ACCOUNTING_SERVICES,
             icon: <FileSearch className="text-cyan-600" />,
@@ -105,9 +98,9 @@ const Services: React.FC = () => {
         <section id="services" className="py-12  bg-white overflow-hidden">
             <div className="max-w-[1720px] mx-auto px-6">
                 <div className="flex flex-col items-center text-center gap-6 mb-16 md:mb-20 px-4">
-                    <h2 className="text-indigo-600 font-bold tracking-widest uppercase text-xs md:text-sm">Comprehensive Expertise</h2>
+                    <h2 className="text-blue-950 font-bold tracking-widest uppercase text-xs md:text-sm">Comprehensive Expertise</h2>
                     <h3 className="text-3xl md:text-4xl lg:text-6xl font-bold text-gray-900 leading-tight max-w-4xl">
-                        Professional Solutions for Your <span className="text-indigo-600">Financial Growth</span>
+                        Professional Solutions
                     </h3>
                     <p className="text-base md:text-xl text-gray-600 max-w-2xl">
                         We offer a wide range of specialized services tailored to meet the contemporary needs of our diverse clientele.
@@ -119,13 +112,13 @@ const Services: React.FC = () => {
                         <div
                             key={index}
                             onClick={() => setSelectedService(service)}
-                            className="group p-8 rounded-[2.5rem] bg-gray-50 border border-gray-100 hover:bg-white hover:border-indigo-100 hover:shadow-2xl hover:shadow-indigo-50 transition-all duration-500 cursor-pointer flex flex-col gap-6"
+                            className="group p-8 rounded-[2.5rem] bg-gray-50 border border-gray-100 hover:bg-white hover:border-blue-950/20 hover:shadow-2xl hover:shadow-blue-950/10 transition-all duration-500 cursor-pointer flex flex-col gap-6"
                         >
                             <div className={`w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500`}>
                                 {service.icon}
                             </div>
                             <div className="flex flex-col gap-3">
-                                <h4 className="text-2xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                                <h4 className="text-2xl font-bold text-gray-900 group-hover:text-blue-950 transition-colors">
                                     {service.title}
                                 </h4>
                                 <p className="text-gray-600 text-[15px] leading-relaxed line-clamp-4">
@@ -141,14 +134,14 @@ const Services: React.FC = () => {
                                         </span>
                                     ))}
                                     {service.types.split(',').length > 3 && (
-                                        <span className="px-3 py-1 bg-white rounded-full text-[12px] font-semibold text-indigo-400 border border-gray-100">
+                                        <span className="px-3 py-1 bg-white rounded-full text-[12px] font-semibold text-blue-950/40 border border-gray-100">
                                             +{service.types.split(',').length - 3} More
                                         </span>
                                     )}
                                 </div>
                             )}
 
-                            <div className="flex items-center gap-2 text-indigo-600 font-bold text-sm mt-4 group-hover:translate-x-2 transition-transform">
+                            <div className="flex items-center gap-2 text-blue-950 font-bold text-sm mt-4 group-hover:translate-x-2 transition-transform">
                                 Read More
                                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -174,7 +167,7 @@ const Services: React.FC = () => {
                                 </div>
                                 <div className="flex flex-col gap-1">
                                     <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{selectedService.title}</h2>
-                                    <p className="text-indigo-600 font-semibold text-sm tracking-wide uppercase">Core Specialization</p>
+                                    <p className="text-blue-950 font-semibold text-sm tracking-wide uppercase">Core Specialization</p>
                                 </div>
                             </div>
                             <button
@@ -200,8 +193,8 @@ const Services: React.FC = () => {
                                         <h4 className="text-lg font-bold text-gray-900">Specialized Offerings</h4>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             {selectedService.fullList.map((item, i) => (
-                                                <div key={i} className="flex gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 group hover:border-indigo-100 hover:bg-white transition-all">
-                                                    <CheckCircle2 size={18} className="text-indigo-500 shrink-0 mt-1" />
+                                                <div key={i} className="flex gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 group hover:border-blue-950/20 hover:bg-white transition-all">
+                                                    <CheckCircle2 size={18} className="text-blue-950 shrink-0 mt-1" />
                                                     <span className="text-gray-700 text-sm md:text-[15px] leading-relaxed">{item}</span>
                                                 </div>
                                             ))}
@@ -222,7 +215,7 @@ const Services: React.FC = () => {
                                     setSelectedService(null);
                                     window.location.href = '#contact';
                                 }}
-                                className="w-full sm:w-fit px-8 py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-100 active:scale-95"
+                                className="w-full sm:w-fit px-8 py-4 bg-blue-950 text-white font-bold rounded-2xl hover:bg-blue-950/90 transition-all shadow-xl shadow-blue-950/10 active:scale-95"
                             >
                                 Enquire Now
                             </button>

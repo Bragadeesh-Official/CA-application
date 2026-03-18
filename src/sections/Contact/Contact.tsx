@@ -1,32 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { COMPANY_EMAIL, COMPANY_PHONE, COMPANY_ADDRESS } from '../../constant';
+const IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const FIREBASE_FUNCTION_URL = IS_LOCAL
+    ? "http://localhost:5001/ca-application-5203c/us-central1/sendContactForm" // Local emulator URL
+    : "https://sendcontactform-8a9c0ab7.cloudfunctions.net/sendContactForm"; // Production URL
 
 const Contact: React.FC = () => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const form = e.currentTarget;
+
+        setIsSubmitting(true);
+
+        try {
+            const formData = {
+                name: (form.elements.namedItem("name") as HTMLInputElement).value,
+                email: (form.elements.namedItem("email") as HTMLInputElement).value,
+                subject: (form.elements.namedItem("subject") as HTMLInputElement).value,
+                message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+                // Files are currently handled separately or ignored depending on your Firebase plan (Storage is usually better for files)
+            };
+
+            const response = await fetch(FIREBASE_FUNCTION_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                alert("Thank you! Your message has been sent successfully.");
+                form.reset();
+            } else {
+                throw new Error("Submission failed");
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <section id="contact" className="py-12 bg-white">
-            <div className="max-w-[1720px] mx-auto px-6">
+            <div className="max-w-[1720px] mx-auto px-8 lg:px-[10%]">
                 <div className="flex flex-col gap-12 md:gap-16">
                     {/* Section Header */}
                     <div className="flex flex-col gap-4 text-center max-w-2xl mx-auto px-4">
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">Get in Touch</h2>
                         <p className="text-gray-600 text-base md:text-lg">
-                            Have questions or need expert financial advice? Our team is here to help you navigate your business challenges.
+                            Have questions or need professional financial advice? Our team is here to help you navigate your business challenges.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12">
                         {/* Contact Form */}
                         <div className="lg:col-span-3 bg-white border border-gray-100 p-6 md:p-8 rounded-[2rem] shadow-xl shadow-gray-100/50">
-                            <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+                            <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="flex flex-col gap-2">
                                         <label htmlFor="name" className="text-sm font-semibold text-gray-700">Full Name</label>
                                         <input
                                             type="text"
                                             id="name"
+                                            name="name"
+                                            required
                                             placeholder="John Doe"
-                                            className="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 focus:border-indigo-600 transition-all text-sm md:text-base"
+                                            className="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-950/20 focus:border-blue-950 transition-all text-sm md:text-base"
                                         />
                                     </div>
                                     <div className="flex flex-col gap-2">
@@ -34,8 +78,10 @@ const Contact: React.FC = () => {
                                         <input
                                             type="email"
                                             id="email"
+                                            name="email"
+                                            required
                                             placeholder="john@example.com"
-                                            className="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 focus:border-indigo-600 transition-all text-sm md:text-base"
+                                            className="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-950/20 focus:border-blue-950 transition-all text-sm md:text-base"
                                         />
                                     </div>
                                 </div>
@@ -44,34 +90,59 @@ const Contact: React.FC = () => {
                                     <input
                                         type="text"
                                         id="subject"
+                                        name="subject"
+                                        required
                                         placeholder="Service Inquiry"
-                                        className="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 focus:border-indigo-600 transition-all text-sm md:text-base"
+                                        className="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-950/20 focus:border-blue-950 transition-all text-sm md:text-base"
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <label htmlFor="message" className="text-sm font-semibold text-gray-700">Message</label>
                                     <textarea
                                         id="message"
+                                        name="message"
+                                        required
                                         rows={5}
                                         placeholder="How can we help you?"
-                                        className="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-600/20 focus:border-indigo-600 transition-all resize-none text-sm md:text-base"
+                                        className="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-950/20 focus:border-blue-950 transition-all resize-none text-sm md:text-base"
                                     ></textarea>
                                 </div>
+                                {/* <div className="flex flex-col gap-2">
+                                    <label htmlFor="file" className="text-sm font-semibold text-gray-700">Attachment (Optional)</label>
+                                    <input
+                                        type="file"
+                                        id="file"
+                                        accept=".pdf,.doc,.docx"
+                                        onChange={(e) => setFile(e.target.files?.[0] || null)}
+                                        className="px-4 py-2 text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-950/5 file:text-blue-950 hover:file:bg-blue-950/10 transition-all"
+                                    />
+                                    {file && <p className="text-xs text-blue-950">Selected: {file.name}</p>}
+                                </div> */}
                                 <button
                                     type="submit"
-                                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200 group active:scale-95"
+                                    disabled={isSubmitting}
+                                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-950 text-white font-bold rounded-2xl hover:bg-blue-950/90 transition-all shadow-lg shadow-blue-950/10 group active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
                                 >
-                                    <span>Send Message</span>
-                                    <Send size={18} className="group-hover:translate-x-1 transition-transform" />
+                                    {isSubmitting ? (
+                                        <>
+                                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                            <span>Sending...</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span>Send Message</span>
+                                            <Send size={18} className="group-hover:translate-x-1 transition-transform" />
+                                        </>
+                                    )}
                                 </button>
                             </form>
                         </div>
 
                         {/* Contact Info Card */}
-                        <div className="lg:col-span-2 bg-indigo-600 p-8 md:p-10 rounded-[2rem] text-white flex flex-col gap-8 md:gap-10 relative overflow-hidden group">
+                        <div className="lg:col-span-2 bg-blue-950 p-8 md:p-10 rounded-[2rem] text-white flex flex-col gap-8 md:gap-10 relative overflow-hidden group">
                             {/* Decorative background shapes */}
                             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-32 md:w-64 h-32 md:h-64 bg-white/10 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-700" />
-                            <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-24 md:w-48 h-24 md:h-48 bg-indigo-400/20 rounded-full blur-2xl" />
+                            <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-24 md:w-48 h-24 md:h-48 bg-blue-950/20 rounded-full blur-2xl" />
 
                             <div className="relative z-10">
                                 <h3 className="text-xl md:text-2xl font-bold mb-4 !text-white" style={{ color: 'white' }}>Contact Information</h3>

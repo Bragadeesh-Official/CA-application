@@ -179,20 +179,23 @@ const CalendarPage: React.FC = () => {
                 }
                 `}
             </style>
-            <div className="max-w-[1440px] mx-auto px-4 md:px-8 pt-8">
+            <div className="max-w-[1440px] mx-auto px-8 lg:px-10 pt-8">
 
                 {/* Section Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+                <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
                     <div>
-                        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight flex items-center gap-3">
-                            <CalendarIcon size={28} className="text-indigo-600" />
-                            Tax & Compliance <span className="text-indigo-600">Calendar</span>
+                        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+                            <div className="flex items-start gap-3">
+                                <CalendarIcon size={32} className="text-blue-950 shrink-0 mt-1 md:mt-0" />
+                                <span>Tax & Compliance</span>
+                            </div>
+                            <span className="text-blue-950 pl-11 sm:pl-0">Calendar</span>
                         </h1>
-                        <p className="text-sm text-gray-500 mt-1 uppercase tracking-widest font-bold">Live Compliance Monitoring System</p>
+                        <p className="text-sm text-gray-500 mt-3 sm:mt-1 pl-11 uppercase tracking-widest font-bold">Live Compliance Monitoring System</p>
                     </div>
-                    <div className="text-right">
-                        <div className="text-sm font-black text-indigo-700 bg-indigo-50/50 px-5 py-2.5 rounded-2xl border border-indigo-100 shadow-sm inline-flex items-center gap-3">
-                            <span className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></span>
+                    <div className="w-full lg:w-auto lg:text-right mt-2 lg:mt-0">
+                        <div className="w-full sm:w-auto justify-center text-xs sm:text-sm font-black text-blue-950 bg-blue-950/5 px-4 sm:px-5 py-3 sm:py-2.5 rounded-2xl border border-blue-950/10 shadow-sm inline-flex items-center gap-2 sm:gap-3 whitespace-nowrap">
+                            <span className="w-2 h-2 rounded-full bg-blue-950 animate-pulse"></span>
                             {currentTime.toLocaleString('en-IN', {
                                 day: '2-digit',
                                 month: 'short',
@@ -207,26 +210,26 @@ const CalendarPage: React.FC = () => {
                 </div>
 
                 {/* Search & Filter Bar */}
-                <div className="flex flex-col xl:flex-row gap-4 items-center mb-6">
+                <div className="flex flex-col xl:flex-row gap-4 items-stretch xl:items-center mb-6">
                     <div className="relative w-full xl:flex-1 group">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-indigo-500 transition-colors" size={18} />
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-blue-950/50 transition-colors" size={18} />
                         <input
                             type="text"
                             placeholder="Find compliance by form, act or obligation..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-11 pr-4 py-3 bg-gray-50/50 border-2 border-transparent border-b-gray-100 focus:bg-white focus:border-indigo-400 outline-none transition-all text-sm font-medium"
+                            className="w-full pl-11 pr-4 py-3 bg-gray-50/50 border-2 border-transparent border-b-gray-100 focus:bg-white focus:border-blue-950/40 outline-none transition-all text-sm font-medium"
                         />
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-3 w-full xl:w-auto">
+                    <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 w-full xl:w-auto">
 
                         {/* Search by Date Button */}
                         <button
                             onClick={() => setIsDateDialogOpen(true)}
-                            className={`flex items-center gap-2 px-6 py-3 rounded-2xl border font-bold text-sm uppercase tracking-widest transition-all active:scale-95 shadow-sm ${startDate || endDate
-                                ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg shadow-indigo-100'
-                                : 'bg-white border-gray-100 text-gray-700 hover:border-indigo-400 hover:text-indigo-600'
+                            className={`flex justify-center items-center gap-2 px-6 py-3 rounded-2xl border font-bold text-sm uppercase tracking-widest transition-all active:scale-95 shadow-sm w-full sm:w-auto ${startDate || endDate
+                                ? 'bg-blue-950 border-blue-950 text-white shadow-lg shadow-blue-950/10'
+                                : 'bg-white border-gray-100 text-gray-700 hover:border-blue-950/40 hover:text-blue-950'
                                 }`}
                         >
                             <Calendar size={16} />
@@ -237,7 +240,7 @@ const CalendarPage: React.FC = () => {
                             <select
                                 value={categoryFilter}
                                 onChange={(e) => setCategoryFilter(e.target.value)}
-                                className="w-full pl-4 pr-10 py-3 bg-gray-50/50 border border-gray-200 rounded-xl appearance-none focus:bg-white focus:border-indigo-400 outline-none text-sm font-bold text-gray-700 cursor-pointer"
+                                className="w-full pl-4 pr-10 py-3 bg-gray-50/50 border border-gray-200 rounded-xl appearance-none focus:bg-white focus:border-blue-950/40 outline-none text-sm font-bold text-gray-700 cursor-pointer"
                             >
                                 {categories.map(cat => (
                                     <option key={cat} value={cat}>{cat}</option>
@@ -246,11 +249,11 @@ const CalendarPage: React.FC = () => {
                             <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={16} />
                         </div>
 
-                        <div className="relative w-44 shrink-0 font-bold">
+                        <div className="relative w-full sm:w-44 shrink-0 font-bold">
                             <select
                                 value={itemsPerPage}
                                 onChange={(e) => setItemsPerPage(Number(e.target.value))}
-                                className="w-full pl-4 pr-10 py-3 bg-gray-50/50 border border-gray-200 rounded-xl appearance-none focus:bg-white focus:border-indigo-400 outline-none text-sm font-bold text-gray-700 cursor-pointer text-center"
+                                className="w-full pl-4 pr-10 py-3 bg-gray-50/50 border border-gray-200 rounded-xl appearance-none focus:bg-white focus:border-blue-950/40 outline-none text-sm font-bold text-gray-700 cursor-pointer text-left sm:text-center"
                             >
                                 <option value={20}>20 per page</option>
                                 <option value={50}>50 per page</option>
@@ -281,7 +284,7 @@ const CalendarPage: React.FC = () => {
                                         type="date"
                                         value={startDate}
                                         onChange={(e) => setStartDate(e.target.value)}
-                                        className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-indigo-400 text-sm font-medium text-gray-900"
+                                        className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-950/40 text-sm font-medium text-gray-900"
                                     />
                                 </div>
 
@@ -291,14 +294,14 @@ const CalendarPage: React.FC = () => {
                                         type="date"
                                         value={endDate}
                                         onChange={(e) => setEndDate(e.target.value)}
-                                        className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-indigo-400 text-sm font-medium text-gray-900"
+                                        className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-blue-950/40 text-sm font-medium text-gray-900"
                                     />
                                 </div>
 
                                 <div className="pt-4 flex flex-col gap-2">
                                     <button
                                         onClick={() => setIsDateDialogOpen(false)}
-                                        className="w-full py-2.5 bg-indigo-600 text-white rounded-lg font-bold text-sm hover:bg-indigo-700 transition-colors"
+                                        className="w-full py-2.5 bg-blue-950 text-white rounded-lg font-bold text-sm hover:bg-blue-950/90 transition-colors"
                                     >
                                         Apply Filters
                                     </button>
@@ -320,10 +323,10 @@ const CalendarPage: React.FC = () => {
                         <table className="w-full text-left border-collapse">
                             <thead>
                                 <tr className="bg-gray-50 border-b border-gray-200">
-                                    <th className="px-4 py-3 text-xs font-bold text-gray-800 uppercase tracking-widest border-r border-gray-100 w-48 text-center bg-indigo-600 text-white">Due Date</th>
-                                    <th className="px-4 py-3 text-xs font-bold text-gray-800 uppercase tracking-widest border-r border-gray-100 w-32 text-center bg-indigo-600 text-white">Act</th>
-                                    <th className="px-4 py-3 text-xs font-bold text-gray-800 uppercase tracking-widest border-r border-gray-100 w-48 text-center bg-indigo-600 text-white">Form / Resource</th>
-                                    <th className="px-4 py-3 text-xs font-bold text-gray-800 uppercase tracking-widest text-center bg-indigo-600 text-white">Nature of Compliance</th>
+                                    <th className="px-4 py-3 text-xs font-bold text-gray-800 uppercase tracking-widest border-r border-gray-100 w-48 text-center bg-blue-950 text-white">Due Date</th>
+                                    <th className="px-4 py-3 text-xs font-bold text-gray-800 uppercase tracking-widest border-r border-gray-100 w-32 text-center bg-blue-950 text-white">Act</th>
+                                    <th className="px-4 py-3 text-xs font-bold text-gray-800 uppercase tracking-widest border-r border-gray-100 w-48 text-center bg-blue-950 text-white">Form / Resource</th>
+                                    <th className="px-4 py-3 text-xs font-bold text-gray-800 uppercase tracking-widest text-center bg-blue-950 text-white">Nature of Compliance</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
@@ -331,7 +334,7 @@ const CalendarPage: React.FC = () => {
                                     <tr>
                                         <td colSpan={4} className="px-4 py-24 text-center">
                                             <div className="flex flex-col items-center gap-3">
-                                                <div className="w-8 h-8 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+                                                <div className="w-8 h-8 border-4 border-blue-950 border-t-transparent rounded-full animate-spin"></div>
                                                 <p className="text-sm font-bold text-gray-500">Loading compliance data...</p>
                                             </div>
                                         </td>
@@ -340,21 +343,21 @@ const CalendarPage: React.FC = () => {
                                     paginatedEvents.map((event, idx) => {
                                         const dynamicStatus = getStatus(event.date);
                                         return (
-                                            <tr key={idx} className="hover:bg-indigo-50/20 transition-all group">
+                                            <tr key={idx} className="hover:bg-blue-950/5 transition-all group">
                                                 <td className="px-4 py-4 align-top border-r border-gray-100">
                                                     <div className="flex flex-col gap-2">
                                                         <span className="text-sm font-bold text-gray-900">{event.date}</span>
                                                         <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider w-fit border ${dynamicStatus === 'Past' ? 'bg-red-50 text-red-600 border-red-100' :
                                                             dynamicStatus === 'Today' ? 'bg-green-50 text-green-600 border-green-100' :
                                                                 dynamicStatus === 'Tomorrow' ? 'bg-orange-50 text-orange-600 border-orange-100' :
-                                                                    'bg-indigo-50 text-indigo-600 border-indigo-100'
+                                                                    'bg-blue-950/5 text-blue-950 border-blue-950/10'
                                                             }`}>
                                                             {dynamicStatus}
                                                         </span>
                                                     </div>
                                                 </td>
                                                 <td className="px-4 py-4 align-top border-r border-gray-100">
-                                                    <span className="text-xs font-bold text-indigo-600 uppercase">
+                                                    <span className="text-xs font-bold text-blue-950 uppercase">
                                                         {event.act}
                                                     </span>
                                                 </td>
@@ -411,8 +414,8 @@ const CalendarPage: React.FC = () => {
                                             key={pageNum}
                                             onClick={() => setCurrentPage(pageNum)}
                                             className={`w-8 h-8 flex items-center justify-center rounded-lg text-xs font-bold transition-all border ${currentPage === pageNum
-                                                ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm'
-                                                : 'bg-white border-gray-200 text-gray-600 hover:border-indigo-400 hover:text-indigo-600 shadow-sm'
+                                                ? 'bg-blue-950 border-blue-950 text-white shadow-sm'
+                                                : 'bg-white border-gray-200 text-gray-600 hover:border-blue-950/40 hover:text-blue-950 shadow-sm'
                                                 }`}
                                         >
                                             {pageNum}
@@ -439,7 +442,7 @@ const CalendarPage: React.FC = () => {
                 {/* Footnote */}
                 <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-100">
                     <p className="text-[11px] text-gray-500 leading-relaxed italic">
-                        <span className="font-bold uppercase tracking-wider mr-2 not-italic underline decoration-indigo-200">Note:</span>
+                        <span className="font-bold uppercase tracking-wider mr-2 not-italic underline decoration-blue-950/20">Note:</span>
                         This calendar is for general guidance. Tax laws change frequently; please consult our professionals to confirm specific dates. We are not liable for errors or omissions.
                     </p>
                 </div>
@@ -452,9 +455,9 @@ const CalendarPage: React.FC = () => {
 const ExportButton: React.FC<{ icon: React.ReactNode, label: string, onClick?: () => void }> = ({ icon, label, onClick }) => (
     <button
         onClick={onClick}
-        className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-xs font-bold text-gray-700 hover:border-indigo-500 hover:text-indigo-600 hover:bg-indigo-50/50 transition-all active:scale-95 shadow-sm group"
+        className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-xs font-bold text-gray-700 hover:border-blue-950/50 hover:text-blue-950 hover:bg-blue-950/5 transition-all active:scale-95 shadow-sm group"
     >
-        <span className="text-gray-400 group-hover:text-indigo-500 transition-colors">{icon}</span>
+        <span className="text-gray-400 group-hover:text-blue-950/50 transition-colors">{icon}</span>
         {label}
     </button>
 );
