@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { COMPANY_EMAIL, COMPANY_PHONE, COMPANY_ADDRESS } from '../../constant';
-const IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-const FIREBASE_FUNCTION_URL = IS_LOCAL
-    ? "http://localhost:5001/ca-application-5203c/us-central1/sendContactForm" // Local emulator URL
-    : "https://sendcontactform-8a9c0ab7.cloudfunctions.net/sendContactForm"; // Production URL
+
+const SERVICE_ID = "service_i8xlfo4";
+const TEMPLATE_ID = "template_kd04m42";
+const PUBLIC_KEY = "0gmu7E7rJR_vsuuEU";
 
 const Contact: React.FC = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,30 +17,37 @@ const Contact: React.FC = () => {
         setIsSubmitting(true);
 
         try {
+            const userEmail = (form.elements.namedItem("email") as HTMLInputElement).value;
+            const userMessage = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+
             const formData = {
+                user_name: (form.elements.namedItem("name") as HTMLInputElement).value,
                 name: (form.elements.namedItem("name") as HTMLInputElement).value,
-                email: (form.elements.namedItem("email") as HTMLInputElement).value,
-                subject: (form.elements.namedItem("subject") as HTMLInputElement).value,
-                message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
-                // Files are currently handled separately or ignored depending on your Firebase plan (Storage is usually better for files)
+                email: userEmail,
+                user_subject: (form.elements.namedItem("subject") as HTMLInputElement).value,
+                user_message: `From: ${userEmail}\n\n${userMessage}`,
+                time: new Date().toLocaleString(),
             };
 
-            const response = await fetch(FIREBASE_FUNCTION_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData)
-            });
+            console.log("Sending Email with params:", formData);
 
-            if (response.ok) {
-                alert("Thank you! Your message has been sent successfully.");
-                form.reset();
-            } else {
-                throw new Error("Submission failed");
+            const result = await emailjs.send(
+                SERVICE_ID,
+                TEMPLATE_ID,
+                formData,
+                PUBLIC_KEY
+            );
+
+            console.log("EmailJS Success:", result.status, result.text);
+
+            alert("Thank you! Your message has been sent successfully.");
+            form.reset();
+        } catch (error: any) {
+            console.error("Submission error details:", error);
+            if (error.text) {
+                console.error("EmailJS Error Text:", error.text);
             }
-        } catch (error) {
-            console.error("Submission error:", error);
+            alert(`Oops! Something went wrong: ${error.text || "Submission failed"}`);
         } finally {
             setIsSubmitting(false);
         }
