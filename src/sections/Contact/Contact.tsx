@@ -46,7 +46,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <section id="contact" className="py-12 bg-white">
+        <section id="contact" className="py-8 md:py-16 bg-white">
             <div className="max-w-[1720px] mx-auto px-8 lg:px-[10%]">
                 <div className="flex flex-col gap-12 md:gap-16">
                     {/* Section Header */}
@@ -183,7 +183,7 @@ const Contact: React.FC = () => {
 
                             <div className="mt-auto relative z-10 pt-6 md:pt-8 border-t border-white/10">
                                 <p className="text-xs md:text-sm !text-white opacity-80" style={{ color: 'white' }}>
-                                    Available Mon-Fri, 9:00 AM - 6:00 PM IST
+                                    Available Mon-Sat, 10:00 AM - 6:00 PM IST
                                 </p>
                             </div>
                         </div>

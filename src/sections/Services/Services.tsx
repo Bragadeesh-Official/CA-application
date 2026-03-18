@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { IndianRupee, ShieldCheck, Landmark, Building2, FileSearch, Shield, X, CheckCircle2 } from 'lucide-react';
+import React from 'react';
+import { Handshake, ShieldCheck, Building2, Monitor, Scroll, Shield, Globe, BriefcaseBusiness, Calculator } from 'lucide-react';
 import * as constants from '../../constant';
 
 interface Service {
@@ -12,24 +12,24 @@ interface Service {
 }
 
 const Services: React.FC = () => {
-    const [selectedService, setSelectedService] = useState<Service | null>(null);
+    // const [selectedService, setSelectedService] = useState<Service | null>(null);
 
-    // Prevent body scroll when modal is open
-    useEffect(() => {
-        if (selectedService) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, [selectedService]);
+    // // Prevent body scroll when modal is open
+    // useEffect(() => {
+    //     if (selectedService) {
+    //         document.body.style.overflow = 'hidden';
+    //     } else {
+    //         document.body.style.overflow = 'unset';
+    //     }
+    //     return () => {
+    //         document.body.style.overflow = 'unset';
+    //     };
+    // }, [selectedService]);
 
     const servicesData: Service[] = [
         {
             title: "Audit & Assurance",
-            description: constants.AUDIT_DESCRIPTION,
+            description: "Independent audit and assurance services to enhance the reliability of financial information and ensure compliance with applicable laws and standards.",
             types: constants.AUDIT_TYPES.join(', '),
             fullList: [...constants.AUDIT_TYPES, ...constants.AUDIT_SERVICES],
             icon: <ShieldCheck className="text-blue-950" />,
@@ -37,21 +37,21 @@ const Services: React.FC = () => {
         },
         {
             title: "GST",
-            description: constants.GST_SERVICES.join(', '),
+            description: "Comprehensive support in GST compliance, return filings, and advisory, including handling of notices, revocation matters, and appellate proceedings.",
             fullList: constants.GST_SERVICES,
-            icon: <IndianRupee className="text-blue-600" />,
+            icon: <Calculator className="text-blue-600" />,
             color: "blue"
         },
         {
             title: "Income Tax",
-            description: constants.INCOME_TAX_SERVICES.join(', '),
+            description: "Assistance in tax planning, return filing, and representation in scrutiny assessments and related proceedings to ensure compliance with income tax laws.",
             fullList: constants.INCOME_TAX_SERVICES,
-            icon: <Landmark className="text-teal-600" />,
+            icon: <BriefcaseBusiness className="text-teal-600" />,
             color: "teal"
         },
         {
             title: "Corporate Governance",
-            description: constants.CORPORATE_GOVERNANCE_DESCRIPTION,
+            description: "Advisory on governance practices to strengthen transparency, accountability, and regulatory compliance within the organization.",
             types: constants.CORPORATE_GOVERNANCE_SERVICES.join(', '),
             fullList: [constants.CORPORATE_GOVERNANCE_DETAILS, ...constants.CORPORATE_GOVERNANCE_SERVICES],
             icon: <Shield className="text-purple-600" />,
@@ -59,46 +59,47 @@ const Services: React.FC = () => {
         },
         {
             title: "Corporate Law",
-            description: constants.CORPORATE_SERVICES.join(', '),
+            description: "Support in company law matters including incorporation, statutory filings, and ongoing compliance under applicable regulations.",
             fullList: constants.CORPORATE_SERVICES,
             icon: <Building2 className="text-rose-600" />,
             color: "rose"
         },
         {
             title: "Non-Resident Services",
-            description: constants.NON_RESIDENT_SERVICES.join(', '),
+            description: "Specialized services for non-residents covering tax compliance, advisory, and cross-border regulatory requirements.",
             fullList: constants.NON_RESIDENT_SERVICES,
-            icon: <Landmark className="text-amber-600" />,
+            icon: <Globe className="text-amber-600" />,
             color: "amber"
         },
-        {
-            title: "Corporate Finance",
-            description: constants.CORPORATE_FINANCE_SERVICES.join(', '),
-            fullList: constants.CORPORATE_FINANCE_SERVICES,
-            icon: <Landmark className="text-emerald-600" />,
-            color: "emerald"
-        },
+        
         {
             title: "TDS Compliance",
-            description: constants.TDS_SERVICES.join(', '),
+            description: "End-to-end assistance in TDS calculation, deduction, filing, and reporting in accordance with statutory requirements.",
             fullList: constants.TDS_SERVICES,
-            icon: <FileSearch className="text-blue-950" />,
+            icon: <Scroll className="text-blue-950" />,
             color: "blue-950"
         },
         {
             title: "Virtual CFO Services",
-            description: constants.ACCOUNTING_SERVICES.join(', '),
+            description: "Ongoing financial management and strategic advisory services to support informed decision-making and operational efficiency.",
             fullList: constants.ACCOUNTING_SERVICES,
-            icon: <FileSearch className="text-cyan-600" />,
+            icon: <Monitor className="text-cyan-600" />,
             color: "cyan"
+        },
+        
+        {
+            title: "Advisory Services",
+            description: "Expert guidance on financial, tax, and business matters to support informed decision-making and optimize overall performance.",
+            icon: <Handshake className="text-indigo-600" />,
+            color: "indigo"
         }
     ];
 
     return (
-        <section id="services" className="py-12  bg-white overflow-hidden">
+        <section id="services" className="py-8 md:py-16 bg-white overflow-hidden">
             <div className="max-w-[1720px] mx-auto px-6">
                 <div className="flex flex-col items-center text-center gap-6 mb-16 md:mb-20 px-4">
-                    <h2 className="text-blue-950 font-bold tracking-widest uppercase text-xs md:text-sm">Comprehensive Expertise</h2>
+                    {/* <h2 className="text-blue-950 font-bold tracking-widest uppercase text-xs md:text-sm">Comprehensive Expertise</h2> */}
                     <h3 className="text-3xl md:text-4xl lg:text-6xl font-bold text-gray-900 leading-tight max-w-4xl">
                         Professional Solutions
                     </h3>
@@ -111,8 +112,8 @@ const Services: React.FC = () => {
                     {servicesData.map((service, index) => (
                         <div
                             key={index}
-                            onClick={() => setSelectedService(service)}
-                            className="group p-8 rounded-[2.5rem] bg-gray-50 border border-gray-100 hover:bg-white hover:border-blue-950/20 hover:shadow-2xl hover:shadow-blue-950/10 transition-all duration-500 cursor-pointer flex flex-col gap-6"
+                            // onClick={() => setSelectedService(service)}
+                            className="group p-8 rounded-[2.5rem] bg-gray-50 border border-gray-100 hover:bg-white hover:border-blue-950/20 hover:shadow-2xl hover:shadow-blue-950/10 transition-all duration-500 flex flex-col gap-6"
                         >
                             <div className={`w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500`}>
                                 {service.icon}
@@ -126,40 +127,19 @@ const Services: React.FC = () => {
                                 </p>
                             </div>
 
-                            {service.types && (
-                                <div className="flex flex-wrap gap-2 mt-auto">
-                                    {service.types.split(',').slice(0, 3).map((type, tIdx) => (
-                                        <span key={tIdx} className="px-3 py-1 bg-white rounded-full text-[12px] font-semibold text-gray-500 border border-gray-100">
-                                            {type.trim()}
-                                        </span>
-                                    ))}
-                                    {service.types.split(',').length > 3 && (
-                                        <span className="px-3 py-1 bg-white rounded-full text-[12px] font-semibold text-blue-950/40 border border-gray-100">
-                                            +{service.types.split(',').length - 3} More
-                                        </span>
-                                    )}
-                                </div>
-                            )}
-
-                            <div className="flex items-center gap-2 text-blue-950 font-bold text-sm mt-4 group-hover:translate-x-2 transition-transform">
-                                Read More
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </div>
+                            {/* Tags removed as per request */}
                         </div>
                     ))}
                 </div>
             </div>
 
-            {/* Service Detail Modal */}
+            {/* Service Detail Modal - Disabled for now
             {selectedService && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-gray-900/40 backdrop-blur-md animate-in fade-in duration-300">
                     <div
                         className="bg-white w-full max-w-3xl max-h-[90vh] rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 slide-in-from-bottom-4 duration-300"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {/* Modal Header */}
                         <div className="p-6 md:p-10 border-b border-gray-100 flex items-start justify-between bg-gray-50/50">
                             <div className="flex items-center gap-6">
                                 <div className="w-16 h-16 rounded-2xl bg-white border border-gray-100 flex items-center justify-center shadow-sm shrink-0">
@@ -178,7 +158,6 @@ const Services: React.FC = () => {
                             </button>
                         </div>
 
-                        {/* Modal Body */}
                         <div className="flex-1 overflow-y-auto p-6 md:p-10 custom-scrollbar">
                             <div className="flex flex-col gap-8">
                                 <div className="flex flex-col gap-4">
@@ -204,7 +183,6 @@ const Services: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Modal Footer */}
                         <div className="p-6 md:p-10 bg-gray-50/50 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-6">
                             <div className="text-center sm:text-left">
                                 <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">Expert Consultation</p>
@@ -223,6 +201,7 @@ const Services: React.FC = () => {
                     </div>
                 </div>
             )}
+            */}
         </section>
     );
 };

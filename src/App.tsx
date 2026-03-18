@@ -4,6 +4,7 @@ import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage';
 import TeamPage from './pages/TeamPage';
 import ResourcesPage from './pages/ResourcesPage';
+import ResourcesMainPage from './pages/ResourcesMainPage';
 import CalendarPage from './pages/CalendarPage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
@@ -19,6 +20,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/team" element={<TeamPage />} />
+          <Route path="/resources" element={<ResourcesMainPage />} />
           <Route path="/resources/:category" element={<ResourcesPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/contact" element={<ContactUsPage />} />

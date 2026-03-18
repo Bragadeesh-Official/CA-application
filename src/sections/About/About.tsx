@@ -7,21 +7,21 @@ const About: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <section id="about" className="py-20 bg-gray-50/50 overflow-hidden">
-            <div className="max-w-[1720px] mx-auto px-8 lg:px-[20]">
+        <section id="about" className="py-8 md:py-20 bg-gray-50/50 overflow-hidden">
+            <div className="max-w-[1720px] mx-auto px-8 lg:px-[10%]">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
                     {/* Content Container */}
                     <div className="flex flex-col gap-10">
                         <div className="flex flex-col gap-4">
                             <h2 className="text-blue-950 font-bold tracking-widest uppercase text-xs md:text-sm">Our Legacy</h2>
                             <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                                Established Professional Excellence <span className="text-blue-950">Since 2003</span>
+                                Established <span className="text-blue-950">Since 2003</span>
                             </h3>
                         </div>
 
                         <div className="flex flex-col gap-8 text-base md:text-xl text-gray-600 leading-relaxed">
                             <p>{constants.HOME_ABOUT_1}</p>
-                            <p>{constants.HOME_ABOUT_2}</p>
+
                             <p>{constants.HOME_ABOUT_3}</p>
                             <p>{constants.HOME_ABOUT_4}</p>
                         </div>
