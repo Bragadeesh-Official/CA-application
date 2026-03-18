@@ -11,7 +11,7 @@ import ContactUsPage from './pages/ContactUsPage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white font-sans selection:bg-indigo-100 selection:text-indigo-900">
+    <div className="min-h-screen bg-white font-sans selection:bg-blue-950/10 selection:text-blue-950">
       <Navbar />
       <main className="pt-20">
         <Routes>

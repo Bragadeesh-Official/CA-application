@@ -14,9 +14,9 @@ const KnowledgeBank: React.FC = () => {
         {
             title: "Tax Circulars",
             description: "Stay updated with the latest circulars from Income Tax and GST departments.",
-            icon: <FileText className="text-indigo-600" />,
+            icon: <FileText className="text-blue-950" />,
             items: ["Recent GST Circulars", "Income Tax Notifications", "CBDT Announcements"],
-            color: "indigo"
+            color: "blue-950"
         },
         {
             title: "Technical Updates",
@@ -43,11 +43,11 @@ const KnowledgeBank: React.FC = () => {
 
     return (
         <section id="knowledge-bank" className="py-24 bg-gray-50/30 overflow-hidden">
-            <div className="max-w-[1720px] mx-auto px-6">
+            <div className="max-w-[1720px] mx-auto px-8 lg:px-10">
                 <div className="flex flex-col items-center text-center gap-6 mb-16 md:mb-20 px-4">
-                    <h2 className="text-indigo-600 font-bold tracking-widest uppercase text-xs md:text-sm">Resource Hub</h2>
+                    <h2 className="text-blue-950 font-bold tracking-widest uppercase text-xs md:text-sm">Resource Hub</h2>
                     <h3 className="text-3xl md:text-4xl lg:text-6xl font-bold text-gray-900 leading-tight max-w-4xl">
-                        Empowering Your <span className="text-indigo-600">Knowledge</span> Bank
+                        Empowering Your <span className="text-blue-950">Knowledge</span> Bank
                     </h3>
                     <p className="text-base md:text-xl text-gray-600 max-w-2xl">
                         Access our curated collection of professional resources, updates, and statutory references to stay ahead in the financial landscape.
@@ -58,14 +58,14 @@ const KnowledgeBank: React.FC = () => {
                     {categories.map((category, index) => (
                         <div
                             key={index}
-                            className="group p-8 rounded-[2.5rem] bg-white border border-gray-100 hover:border-indigo-100 hover:shadow-2xl hover:shadow-indigo-50/50 transition-all duration-500 flex flex-col gap-6"
+                            className="group p-8 rounded-[2.5rem] bg-white border border-gray-100 hover:border-blue-950/10 hover:shadow-2xl hover:shadow-blue-950/5 transition-all duration-500 flex flex-col gap-6"
                         >
-                            <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center group-hover:scale-110 group-hover:bg-indigo-50 transition-all duration-500">
+                            <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center group-hover:scale-110 group-hover:bg-blue-950/5 transition-all duration-500">
                                 {category.icon}
                             </div>
 
                             <div className="flex flex-col gap-3">
-                                <h4 className="text-2xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                                <h4 className="text-2xl font-bold text-gray-900 group-hover:text-blue-950 transition-colors">
                                     {category.title}
                                 </h4>
                                 <p className="text-gray-600 text-[15px] leading-relaxed">
@@ -75,8 +75,8 @@ const KnowledgeBank: React.FC = () => {
 
                             <div className="mt-auto pt-6 border-t border-gray-50 flex flex-col gap-3">
                                 {category.items.map((item, i) => (
-                                    <div key={i} className="flex items-center gap-2 text-sm text-gray-500 hover:text-indigo-600 transition-colors cursor-pointer">
-                                        <ArrowRight size={14} className="text-indigo-400" />
+                                    <div key={i} className="flex items-center gap-2 text-sm text-gray-500 hover:text-blue-950 transition-colors cursor-pointer">
+                                        <ArrowRight size={14} className="text-blue-950/40" />
                                         <span>{item}</span>
                                     </div>
                                 ))}
@@ -85,20 +85,20 @@ const KnowledgeBank: React.FC = () => {
                     ))}
                 </div>
 
-                <div className="mt-20 p-10 md:p-16 rounded-[3rem] bg-indigo-900 text-white relative overflow-hidden">
+                <div className="mt-20 p-10 md:p-16 rounded-[3rem] bg-blue-950 text-white relative overflow-hidden">
                     {/* Decorative Background */}
                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
 
                     <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
                         <div className="flex flex-col gap-6 max-w-2xl text-center md:text-left">
                             <h4 className="text-3xl md:text-4xl font-bold leading-tight">Need specific professional guidance?</h4>
-                            <p className="text-indigo-100 text-lg md:text-xl">
+                            <p className="text-blue-950/20 text-lg md:text-xl">
                                 Our qualified professionals are here to help you navigate complex financial regulations and compliance requirements.
                             </p>
                         </div>
                         <button
                             onClick={() => window.location.href = '#contact'}
-                            className="whitespace-nowrap px-10 py-5 bg-white text-indigo-900 font-bold rounded-2xl hover:bg-gray-100 transition-all shadow-xl active:scale-95"
+                            className="whitespace-nowrap px-10 py-5 bg-white text-blue-950 font-bold rounded-2xl hover:bg-gray-100 transition-all shadow-xl active:scale-95"
                         >
                             Get Professional Advice
                         </button>

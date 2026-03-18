@@ -1,24 +1,24 @@
 import React from 'react';
-import { Shield, FileText, PieChart, Briefcase, CheckCircle2 } from 'lucide-react';
-import heroImage from '../../assets/4999653.jpg';
+import { CheckCircle2 } from 'lucide-react';
+import heroImage from '../../assets/08c4aeb9d10409ee9744973dd14bdc07.jpg';
 
 const IntroSection: React.FC = () => {
     return (
         <section className="relative overflow-hidden bg-white py-6 md:py-12">
             {/* Background Decorative Element */}
-            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-indigo-50 rounded-full blur-3xl opacity-50 -z-10" />
+            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-blue-950/5 rounded-full blur-3xl opacity-50 -z-10" />
 
-            <div className="max-w-[1720px] mx-auto px-6 pt-12 md:pt-16 pb-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center pb-12">
-                    Commitment to <span className="text-indigo-600">Professional Excellence</span>
+            <div className="max-w-[1720px] mx-auto px-8 lg:px-[10%] pt-12 md:pt-16 pb-8">
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold !text-blue-950 leading-tight text-center pb-12">
+                    Commitment to <span className="text-blue-950">Professional Excellence</span>
                 </h2>
             </div>
 
-            <div className="max-w-[1720px] mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-10 items-center">
+            <div className="max-w-[1720px] mx-auto px-8 lg:px-[10%] grid md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-10 items-center">
                 {/* Left Content */}
                 <div className="flex flex-col gap-6 md:gap-8 order-2 md:order-1">
                     <p className="text-lg md:text-xl text-black max-w-xl leading-relaxed">
-                        T NAGARAJU & Co is a professionally managed chartered accountancy firm established in 1982. We provide comprehensive professional services in audit, management consultancy, and tax advisory, combining specialized skills with personalized, proactive advice.
+                        T NAGARAJU & Co is a professionally managed chartered accountancy firm established in 2003. We provide comprehensive professional services in audit, management consultancy, and tax advisory, combining specialized skills with personalized, proactive advice.
                     </p>
 
                     <div className="flex flex-col gap-6">
@@ -62,13 +62,13 @@ const IntroSection: React.FC = () => {
                     <div className="flex flex-wrap gap-4 pt-4">
                         <button
                             onClick={() => window.location.href = '/services'}
-                            className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-100 active:scale-95"
+                            className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-blue-950 text-white font-bold rounded-2xl hover:bg-blue-900 transition-all shadow-xl shadow-blue-950/10 active:scale-95"
                         >
                             Explore Services
                         </button>
                         <button
                             onClick={() => window.location.href = '/about'}
-                            className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white text-gray-900 font-bold rounded-2xl border-2 border-gray-100 hover:border-indigo-600 hover:text-indigo-600 transition-all active:scale-95"
+                            className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white text-gray-900 font-bold rounded-2xl border-2 border-gray-100 hover:border-blue-950 hover:text-blue-950 transition-all active:scale-95"
                         >
                             Learn More
                         </button>
@@ -86,28 +86,28 @@ const IntroSection: React.FC = () => {
                         />
 
                         {/* Floating Badges */}
-                        <div className="hidden sm:block">
+                        {/* <div className="hidden sm:block">
                             <FloatingBadge
                                 icon={<Shield className="text-blue-600" size={20} />}
                                 label="Audit"
-                                className="top-5 md:top-10 -left-2 md:-left-6 lg:-left-12 animate-float-slow text-[10px] md:text-sm p-2 md:p-4"
+                                className="top-5 md:top-10 -left-2 md:-left-6 lg:-left-12 text-[10px] md:text-sm p-2 md:p-4"
                             />
                             <FloatingBadge
-                                icon={<FileText className="text-indigo-600" size={20} />}
+                                icon={<FileText className="text-blue-950" size={20} />}
                                 label="GST"
-                                className="bottom-10 md:bottom-20 -left-4 md:-left-10 lg:-left-20 animate-float-delayed text-[10px] md:text-sm p-2 md:p-4"
+                                className="bottom-10 md:bottom-20 -left-4 md:-left-10 lg:-left-20 text-[10px] md:text-sm p-2 md:p-4"
                             />
                             <FloatingBadge
                                 icon={<PieChart className="text-pink-600" size={20} />}
                                 label="Accounting"
-                                className="top-10 md:top-32 -right-2 md:-right-6 lg:-right-12 animate-float text-[10px] md:text-sm p-2 md:p-4"
+                                className="top-10 md:top-32 -right-2 md:-right-6 lg:-right-12 text-[10px] md:text-sm p-2 md:p-4"
                             />
                             <FloatingBadge
                                 icon={<Briefcase className="text-orange-600" size={20} />}
                                 label="Finance"
-                                className="bottom-5 md:bottom-10 right-0 md:right-4 lg:right-8 animate-float-slow text-[10px] md:text-sm p-2 md:p-4"
+                                className="bottom-5 md:bottom-10 right-0 md:right-4 lg:right-8 text-[10px] md:text-sm p-2 md:p-4"
                             />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
@@ -115,13 +115,6 @@ const IntroSection: React.FC = () => {
     );
 };
 
-const FloatingBadge: React.FC<{ icon: React.ReactNode; label: string; className?: string }> = ({ icon, label, className }) => (
-    <div className={`absolute z-20 bg-white p-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-gray-50 transition-transform hover:scale-110 cursor-pointer ${className}`}>
-        <div className="p-2 bg-gray-50 rounded-lg">
-            {icon}
-        </div>
-        <span className="font-bold text-gray-900 pr-2">{label}</span>
-    </div>
-);
+
 
 export default IntroSection;

@@ -6,7 +6,7 @@ export const COMPANY_ADDRESS = "14, Kondasamy Nagar, Peelamedu, Coimbatore - 641
 
 // HOME PAGE
 export const HOME_ABOUT_1 =
-    "Company Name was established in the year 1982. A chartered accountancy firm rendering comprehensive professional services which include audit, management consultancy, tax consultancy, accounting services, manpower management, secretarial services etc.";
+    "Company Name was established in the year 2003. A chartered accountancy firm rendering comprehensive professional services which include audit, management consultancy, tax consultancy, accounting services, manpower management, secretarial services etc.";
 
 export const HOME_ABOUT_2 =
     "Company Name is a professionally managed firm. The team consists of distinguished chartered accountants, corporate financial advisors and tax consultants.";

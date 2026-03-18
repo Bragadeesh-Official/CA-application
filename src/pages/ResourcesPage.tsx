@@ -17,7 +17,7 @@ const ResourcesPage: React.FC = () => {
                 <div className="text-center">
                     <h1 className="text-4xl font-bold text-gray-900 mb-4">Resource Not Found</h1>
                     <p className="text-gray-600 mb-8">The requested resource category does not exist.</p>
-                    <Link to="/" className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors">
+                    <Link to="/" className="inline-flex items-center gap-2 px-6 py-3 bg-blue-950 text-white font-semibold rounded-xl hover:bg-blue-950/90 transition-colors">
                         <Home size={20} />
                         Back to Home
                     </Link>
@@ -30,11 +30,11 @@ const ResourcesPage: React.FC = () => {
         <div className="min-h-screen bg-gray-50/50">
             {/* Breadcrumbs / Header */}
             <div className="bg-white border-b border-gray-100">
-                <div className="max-w-[1720px] mx-auto px-6 py-8">
+                <div className="max-w-[1720px] mx-auto px-8 lg:px-10 py-8">
                     <nav className="flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-4">
-                        <Link to="/" className="hover:text-indigo-600 transition-colors">Home</Link>
+                        <Link to="/" className="hover:text-blue-950 transition-colors">Home</Link>
                         <ChevronRight size={14} />
-                        <span className="text-indigo-600 font-medium">Knowledge Bank</span>
+                        <span className="text-blue-950 font-medium">Knowledge Bank</span>
                         <ChevronRight size={14} />
                         <span className="text-gray-900 font-semibold">{resource.title}</span>
                     </nav>
@@ -60,16 +60,16 @@ const ResourcesPage: React.FC = () => {
             </div>
 
             {/* Content Grid */}
-            <div className="max-w-[1720px] mx-auto px-6 py-12">
+            <div className="max-w-[1720px] mx-auto px-8 lg:px-10 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {resource.data.map((cat, idx) => (
                         <div
                             key={idx}
-                            className="bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-indigo-50/50 transition-all duration-300 overflow-hidden flex flex-col group"
+                            className="bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-blue-950/10 transition-all duration-300 overflow-hidden flex flex-col group"
                         >
-                            <div className="px-8 py-6 bg-indigo-50/50 border-b border-gray-100 group-hover:bg-indigo-50 transition-colors">
+                            <div className="px-8 py-6 bg-blue-950/5 border-b border-gray-100 group-hover:bg-blue-950/10 transition-colors">
                                 <h2 className="text-xl font-bold text-gray-900 flex items-center gap-3">
-                                    <span className="w-2 h-8 bg-indigo-600 rounded-full" />
+                                    <span className="w-2 h-8 bg-blue-950 rounded-full" />
                                     {cat.title}
                                 </h2>
                             </div>
@@ -82,12 +82,12 @@ const ResourcesPage: React.FC = () => {
                                             href={link.href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium text-gray-600 hover:bg-indigo-50 hover:text-indigo-700 transition-all group/link"
+                                            className="flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-medium text-gray-600 hover:bg-blue-950/5 hover:text-blue-950 transition-all group/link"
                                         >
                                             <span className="flex-1 pr-4">{link.label}</span>
                                             <ExternalLink
                                                 size={14}
-                                                className="text-gray-300 group-hover/link:text-indigo-400 opacity-0 group-hover/link:opacity-100 transition-all"
+                                                className="text-gray-300 group-hover/link:text-blue-950/40 opacity-0 group-hover/link:opacity-100 transition-all"
                                             />
                                         </a>
                                     ))}

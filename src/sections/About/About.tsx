@@ -8,14 +8,14 @@ const About: React.FC = () => {
 
     return (
         <section id="about" className="py-20 bg-gray-50/50 overflow-hidden">
-            <div className="max-w-[1720px] mx-auto px-6">
+            <div className="max-w-[1720px] mx-auto px-8 lg:px-[20]">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20 items-center">
                     {/* Content Container */}
                     <div className="flex flex-col gap-10">
                         <div className="flex flex-col gap-4">
-                            <h2 className="text-indigo-600 font-bold tracking-widest uppercase text-xs md:text-sm">Our Legacy</h2>
+                            <h2 className="text-blue-950 font-bold tracking-widest uppercase text-xs md:text-sm">Our Legacy</h2>
                             <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                                Established Professional Excellence <span className="text-indigo-600">Since 1982</span>
+                                Established Professional Excellence <span className="text-blue-950">Since 2003</span>
                             </h3>
                         </div>
 
@@ -29,13 +29,13 @@ const About: React.FC = () => {
                         <div className="flex flex-wrap gap-4 pt-8">
                             <button
                                 onClick={() => navigate('/team')}
-                                className="px-10 py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-100 active:scale-95"
+                                className="px-10 py-4 bg-blue-950 text-white font-bold rounded-2xl hover:bg-blue-900 transition-all shadow-xl shadow-blue-950/10 active:scale-95"
                             >
                                 Meet Our Team
                             </button>
                             <button
                                 onClick={() => navigate('/contact')}
-                                className="px-10 py-4 bg-white text-gray-900 font-bold rounded-2xl border-2 border-gray-100 hover:border-indigo-600 hover:text-indigo-600 transition-all active:scale-95"
+                                className="px-10 py-4 bg-white text-gray-900 font-bold rounded-2xl border-2 border-gray-100 hover:border-blue-950 hover:text-blue-950 transition-all active:scale-95"
                             >
                                 Get in Touch
                             </button>
@@ -44,8 +44,8 @@ const About: React.FC = () => {
 
                     {/* Image Container */}
                     <div className="relative group">
-                        <div className="absolute -inset-4 bg-indigo-100 rounded-[3rem] blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
-                        <div className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl shadow-indigo-100/50 border-8 border-white">
+                        <div className="absolute -inset-4 bg-blue-950/10 rounded-[3rem] blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
+                        <div className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-950/10 border-8 border-white">
                             <img
                                 src={aboutImage}
                                 alt="Our Legacy"

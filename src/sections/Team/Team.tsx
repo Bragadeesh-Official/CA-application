@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { User, Mail, Phone, Linkedin, Twitter, Loader2 } from 'lucide-react';
+import { User, Mail, Phone, Linkedin, Twitter } from 'lucide-react';
 import * as constants from '../../constant';
 import { createClient } from '../../prismicio';
 import type { TeamDocument } from '../../prismic-types';
@@ -33,7 +33,7 @@ const Team: React.FC = () => {
                 <div className="flex flex-col items-center text-center gap-6 mb-20 max-w-4xl mx-auto">
                     <div className="flex flex-col gap-4">
                         <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                            Driven by <span className="text-indigo-600">Expertise</span> & Excellence
+                            Driven by Expertise & Excellence
                         </h3>
                     </div>
                     <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
@@ -44,18 +44,18 @@ const Team: React.FC = () => {
                 {/* Team Cards Grid */}
                 <div className="relative">
                     {/* Background Decoration */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-100 rounded-full blur-3xl opacity-20 -z-10" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-950/10 rounded-full blur-3xl opacity-20 -z-10" />
 
                     {isLoading ? (
                         <div className="flex flex-col items-center justify-center py-32 gap-4">
-                            <Loader2 className="w-12 h-12 text-indigo-600 animate-spin" />
+                            <div className="w-12 h-12 border-4 border-blue-950 border-t-transparent rounded-full animate-spin"></div>
                             <p className="text-gray-500 font-medium animate-pulse">Loading team members...</p>
                         </div>
                     ) : teamDocuments.length > 0 ? (
                         <div className="grid grid-cols-1 gap-8 max-w-6xl mx-auto">
                             {teamDocuments.map((doc) => (
                                 doc.data.team_detail_group.map((item, itemIndex) => {
-                                   return (
+                                    return (
                                         <div key={`${doc.id}-${itemIndex}`} className="w-full">
                                             <TeamMemberCard
                                                 nameField={item.member_name}
@@ -93,28 +93,28 @@ interface TeamMemberCardProps {
 }
 
 const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ nameField, roleField, descriptionField, image, email, mobile, socials }) => (
-    <div className="bg-white p-6 md:p-10 rounded-[2.5rem] shadow-xl shadow-indigo-100/20 border border-gray-100 flex flex-col lg:flex-row gap-10 hover:border-indigo-200 transition-all duration-300 group hover:-translate-y-1 w-full h-full">
+    <div className="bg-white p-6 md:p-10 rounded-[2.5rem] shadow-xl shadow-blue-950/10 border border-gray-100 flex flex-col lg:flex-row gap-10 hover:border-blue-950/20 transition-all duration-300 group hover:-translate-y-1 w-full h-full">
         {/* Left Side: Image and Contact Info */}
         <div className="flex flex-col gap-6 shrink-0 items-center lg:items-start w-full lg:w-72">
             {/* Member Image / Placeholder */}
-            <div className="w-64 h-80 md:w-72 md:h-96 rounded-[2rem] overflow-hidden border-4 border-indigo-50 bg-indigo-50 flex items-center justify-center relative shadow-inner">
+            <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden border-4 border-white shadow-xl shadow-blue-950/5 flex items-center justify-center">
                 {image ? (
                     <img src={image} alt="Member" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 bg-white" />
                 ) : (
-                    <div className="flex flex-col items-center gap-2 text-indigo-300">
+                    <div className="flex flex-col items-center gap-2 text-blue-950/40">
                         <User size={80} strokeWidth={1} />
                         <span className="text-xs font-bold uppercase tracking-widest">No Image</span>
                     </div>
                 )}
-                <div className="absolute inset-0 bg-indigo-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute -inset-2 bg-blue-950 opacity-0 group-hover:opacity-10 transition-opacity blur-xl rounded-full" />
             </div>
 
             {/* Contact Info - Moved under the picture */}
             <div className="flex flex-col gap-4 w-full px-2">
                 {email && (Array.isArray(email) ? email.length > 0 : true) && (
-                    <div className="flex items-center gap-3 text-gray-600 hover:text-indigo-600 transition-colors group/contact">
-                        <div className="p-2.5 bg-indigo-50 rounded-xl group-hover/contact:bg-indigo-600 group-hover/contact:text-white transition-colors">
-                            <Mail size={18} className="shrink-0" />
+                    <div className="flex items-center gap-3 text-gray-600 hover:text-blue-950 transition-colors group/contact">
+                        <div className="p-2 bg-blue-950/5 group-hover/contact:bg-blue-950/10 rounded-lg transition-colors">
+                            <Mail size={16} className="text-blue-950" />
                         </div>
                         <span className="text-sm font-semibold tracking-tight break-all">
                             {typeof email === 'string' ? email : <PrismicText field={email as prismic.RichTextField} />}
@@ -122,9 +122,9 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ nameField, roleField, d
                     </div>
                 )}
                 {mobile && (Array.isArray(mobile) ? mobile.length > 0 : true) && (
-                    <div className="flex items-center gap-3 text-gray-600 hover:text-indigo-600 transition-colors group/contact">
-                        <div className="p-2.5 bg-indigo-50 rounded-xl group-hover/contact:bg-indigo-600 group-hover/contact:text-white transition-colors">
-                            <Phone size={18} className="shrink-0" />
+                    <div className="flex items-center gap-3 text-gray-600 hover:text-blue-950 transition-colors group/contact">
+                        <div className="p-2 bg-blue-950/5 group-hover/contact:bg-blue-950/10 rounded-lg transition-colors">
+                            <Phone size={16} className="text-blue-950" />
                         </div>
                         <span className="text-sm font-semibold tracking-tight">
                             {typeof mobile === 'string' || typeof mobile === 'number' ? mobile : <PrismicText field={mobile as prismic.RichTextField} />}
@@ -138,7 +138,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ nameField, roleField, d
                         const link = social.social_media_link as prismic.EmptyLinkField | prismic.FilledLinkToWebField;
                         if (link.link_type === 'Web' && link.url) {
                             return (
-                                <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="w-11 h-11 flex items-center justify-center bg-gray-50 text-gray-400 hover:bg-indigo-600 hover:text-white rounded-xl transition-all duration-300 shadow-sm border border-gray-100/50">
+                                <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="w-11 h-11 flex items-center justify-center bg-gray-50 text-gray-400 hover:bg-blue-950 hover:text-white rounded-xl transition-all duration-300 shadow-sm border border-gray-100/50">
                                     {link.url.includes('linkedin') ? <Linkedin size={20} /> : <Twitter size={20} />}
                                 </a>
                             );
@@ -156,14 +156,14 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ nameField, roleField, d
                     <PrismicText field={nameField} />
                 </h4>
                 <div className="flex items-center justify-center lg:justify-start gap-4">
-                    <div className="w-10 h-[2px] bg-indigo-600 hidden lg:block" />
-                    <p className="text-indigo-600 font-extrabold uppercase tracking-widest text-sm md:text-base">
+                    <div className="w-10 h-[2px] bg-blue-950 hidden lg:block" />
+                    <p className="text-blue-950 font-extrabold uppercase tracking-widest text-sm md:text-base">
                         <PrismicText field={roleField} />
                     </p>
                 </div>
             </div>
 
-            <div className="text-gray-600 text-[1.05rem] leading-relaxed border-l-4 border-indigo-100 pl-8 py-4 rounded-r-2xl text-left
+            <div className="text-gray-600 text-[1.05rem] leading-relaxed border-l-4 border-blue-950/10 pl-8 py-4 rounded-r-2xl text-left
                 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-3 [&_li]:pl-1
                 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-3
                 [&_p]:mb-4 last:[&_p]:mb-0 font-medium">
