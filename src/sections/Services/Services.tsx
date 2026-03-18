@@ -1,5 +1,5 @@
 import React from 'react';
-import { Handshake, ShieldCheck, Building2, Monitor, Scale, Scroll, ChartNoAxesCombined, Shield, Globe, BriefcaseBusiness, Calculator } from 'lucide-react';
+import { Handshake, ShieldCheck, Building2, Monitor, Scroll, Shield, Globe, BriefcaseBusiness, Calculator } from 'lucide-react';
 import * as constants from '../../constant';
 
 interface Service {
@@ -71,13 +71,7 @@ const Services: React.FC = () => {
             icon: <Globe className="text-amber-600" />,
             color: "amber"
         },
-        {
-            title: "Corporate Finance",
-            description: "Advisory on financial structuring, funding strategies, and key business decisions to support sustainable growth.",
-            fullList: constants.CORPORATE_FINANCE_SERVICES,
-            icon: <ChartNoAxesCombined className="text-emerald-600" />,
-            color: "emerald"
-        },
+        
         {
             title: "TDS Compliance",
             description: "End-to-end assistance in TDS calculation, deduction, filing, and reporting in accordance with statutory requirements.",
@@ -92,12 +86,7 @@ const Services: React.FC = () => {
             icon: <Monitor className="text-cyan-600" />,
             color: "cyan"
         },
-        {
-            title: "Litigation Services",
-            description: "Representation and support in tax and regulatory matters before authorities, ensuring effective handling of disputes and compliance proceedings.",
-            icon: <Scale className="text-black" />,
-            color: "red"
-        },
+        
         {
             title: "Advisory Services",
             description: "Expert guidance on financial, tax, and business matters to support informed decision-making and optimize overall performance.",
