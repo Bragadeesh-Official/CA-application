@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ExternalLink, ChevronRight, Home, ArrowLeft } from 'lucide-react';
+import { ExternalLink, Home, ArrowLeft } from 'lucide-react';
 import { allResources } from '../info/links';
 
 const ResourcesPage: React.FC = () => {
@@ -31,13 +31,13 @@ const ResourcesPage: React.FC = () => {
             {/* Breadcrumbs / Header */}
             <div className="bg-white border-b border-gray-100">
                 <div className="max-w-[1720px] mx-auto px-8 lg:px-10 py-8">
-                    <nav className="flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-4">
+                    {/* <nav className="flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-4">
                         <Link to="/" className="hover:text-blue-950 transition-colors">Home</Link>
                         <ChevronRight size={14} />
                         <span className="text-blue-950 font-medium">Knowledge Bank</span>
                         <ChevronRight size={14} />
                         <span className="text-gray-900 font-semibold">{resource.title}</span>
-                    </nav>
+                    </nav> */}
 
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                         <div>

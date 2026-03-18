@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
-import heroImage from '../../assets/08c4aeb9d10409ee9744973dd14bdc07.jpg';
+import heroImage from '../../assets/image copy 2.png';
 
 const IntroSection: React.FC = () => {
     return (

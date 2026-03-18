@@ -6,7 +6,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo from '../../assets/Gemini_Generated_Image_shnbkxshnbkxshnb.png';
+import logo from '../../assets/image copy 3.png';
 import { COMPANY_NAME } from '../../constant';
 
 const Navbar: React.FC = () => {
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-[1720px] mx-auto px-6 md:px-8 lg:px-10 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 md:gap-3 shrink-0">
-          <img src={logo} alt={COMPANY_NAME} className="h-8 md:h-12 w-auto object-contain" />
+          <img src={logo} alt={COMPANY_NAME} className="h-12 md:h-20 w-auto object-contain" />
         </Link>
 
         {/* Navigation Links - Desktop */}

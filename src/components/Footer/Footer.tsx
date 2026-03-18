@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
                         <h4 className="text-white font-bold text-lg">Quick Links</h4>
                         <ul className="flex flex-col gap-4 text-sm">
                             <li><Link to="/" className="hover:text-blue-900 transition-colors" onClick={() => window.scrollTo(0, 0)}>Home</Link></li>
-                            <li><Link to="/about" className="hover:text-blue-900 transition-colors" onClick={() => window.scrollTo(0, 0)}>About Us</Link></li>
+                            <li><Link to="/about" className="hover:text-blue-900 transition-colors" onClick={() => window.scrollTo(0, 0)}>About</Link></li>
                             <li><Link to="/services" className="hover:text-blue-900 transition-colors" onClick={() => window.scrollTo(0, 0)}>Our Services</Link></li>
                             <li><Link to="/contact" className="hover:text-blue-900 transition-colors" onClick={() => window.scrollTo(0, 0)}>Contact Us</Link></li>
                         </ul>

@@ -27,17 +27,18 @@ const Team: React.FC = () => {
     }, []);
 
     return (
-        <section id="team" className=" bg-gray-50/50 overflow-hidden">
+        <section id="team" className="py-16 md:py-24 bg-gray-50/50 overflow-hidden">
             <div className="max-w-[1720px] mx-auto px-6">
                 {/* Centered Header Content */}
                 <div className="flex flex-col items-center text-center gap-6 mb-20 max-w-4xl mx-auto">
                     <div className="flex flex-col gap-4">
                         <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                            Driven by Expertise & Excellence
+                            Our Professionals
                         </h3>
                     </div>
                     <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
-                        {constants.TEAM_DESCRIPTION}
+                        {constants.TEAM_DESCRIPTION}<br />
+                        Key members of our firm are:
                     </p>
                 </div>
 

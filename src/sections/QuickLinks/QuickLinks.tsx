@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Calendar, Briefcase, ArrowRight } from 'lucide-react';
+import { Users, Calendar, FileText, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const QuickLinks: React.FC = () => {
@@ -21,10 +21,10 @@ const QuickLinks: React.FC = () => {
             color: "blue"
         },
         {
-            title: "Our Services",
-            description: "Explore our wide range of specialized services tailored for your business growth.",
-            icon: <Briefcase className="text-teal-600" size={28} />,
-            path: "/services",
+            title: "Resources",
+            description: "Access our collection of useful tools, guides, and important updates tailored to support your business compliance.",
+            icon: <FileText className="text-teal-600" size={28} />,
+            path: "/resources",
             color: "teal"
         }
     ];
