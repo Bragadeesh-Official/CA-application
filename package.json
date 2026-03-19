@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@prismicio/client": "^7.21.6",
     "@prismicio/helpers": "^2.3.9",
     "@prismicio/react": "^3.4.0",
