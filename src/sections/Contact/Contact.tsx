@@ -18,14 +18,17 @@ const Contact: React.FC = () => {
 
         try {
             const userEmail = (form.elements.namedItem("email") as HTMLInputElement).value;
+            const userMobile = (form.elements.namedItem("mobile") as HTMLInputElement).value;
             const userMessage = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+            const userName = (form.elements.namedItem("name") as HTMLInputElement).value;
 
             const formData = {
-                user_name: (form.elements.namedItem("name") as HTMLInputElement).value,
-                name: (form.elements.namedItem("name") as HTMLInputElement).value,
+                user_name: userName,
+                name: userName,
                 email: userEmail,
+                mobile: userMobile,
                 user_subject: (form.elements.namedItem("subject") as HTMLInputElement).value,
-                user_message: `From: ${userEmail}\n\n${userMessage}`,
+                user_message: `From: ${userEmail}\nMobile: ${userMobile}\n\n${userMessage}`,
                 time: new Date().toLocaleString(),
             };
 
@@ -93,16 +96,29 @@ const Contact: React.FC = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className="flex flex-col gap-2">
-                                    <label htmlFor="subject" className="text-sm font-semibold text-gray-700">Subject</label>
-                                    <input
-                                        type="text"
-                                        id="subject"
-                                        name="subject"
-                                        required
-                                        placeholder="Service Inquiry"
-                                        className="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-950/20 focus:border-blue-950 transition-all text-sm md:text-base"
-                                    />
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="flex flex-col gap-2">
+                                        <label htmlFor="mobile" className="text-sm font-semibold text-gray-700">Mobile Number</label>
+                                        <input
+                                            type="tel"
+                                            id="mobile"
+                                            name="mobile"
+                                            required
+                                            placeholder="+91 98765 43210"
+                                            className="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-950/20 focus:border-blue-950 transition-all text-sm md:text-base"
+                                        />
+                                    </div>
+                                    <div className="flex flex-col gap-2">
+                                        <label htmlFor="subject" className="text-sm font-semibold text-gray-700">Subject</label>
+                                        <input
+                                            type="text"
+                                            id="subject"
+                                            name="subject"
+                                            required
+                                            placeholder="Service Inquiry"
+                                            className="px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-950/20 focus:border-blue-950 transition-all text-sm md:text-base"
+                                        />
+                                    </div>
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <label htmlFor="message" className="text-sm font-semibold text-gray-700">Message</label>
@@ -184,7 +200,15 @@ const Contact: React.FC = () => {
                                     </div>
                                     <div>
                                         <p className="font-semibold text-sm md:text-base !text-white" style={{ color: 'white' }}>Visit Us</p>
-                                        <p className="text-sm md:text-base !text-white opacity-90 leading-relaxed" style={{ color: 'white' }}>{COMPANY_ADDRESS}</p>
+                                        <a
+                                            href="https://www.google.com/maps/place/T+NAGARAJU+%26+Co+,+CHARTERED+ACCOUNTANTS/@11.0226698,77.0141288,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba857435f01c8b9:0x4ee20d6a9648cfe7!8m2!3d11.0226645!4d77.0167091!16s%2Fg%2F11rn89bs72?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-sm md:text-base !text-white opacity-90 leading-relaxed hover:text-blue-200 transition-colors"
+                                            style={{ color: 'white' }}
+                                        >
+                                            {COMPANY_ADDRESS}
+                                        </a>
                                     </div>
                                 </div>
                             </div>

@@ -59,15 +59,18 @@ const Navbar: React.FC = () => {
           <NavRouterLink label="Compliance Calendar" to="/calendar" />
 
           {/* Resources Dropdown */}
-          <div className="relative" ref={resourcesRef}>
+          <div className="relative group flex flex-col items-center gap-1 py-2 px-1" ref={resourcesRef}>
             <button
               onClick={() => setIsResourcesOpen(!isResourcesOpen)}
-              className={`flex items-center gap-1 text-sm font-medium transition-colors cursor-pointer py-8 ${location.pathname.startsWith('/resources') ? 'text-blue-950' : 'text-gray-600 hover:text-blue-950'
+              className={`flex items-center gap-1 text-sm transition-colors cursor-pointer ${location.pathname.startsWith('/resources') ? 'text-blue-950 font-bold' : 'text-gray-600 hover:text-blue-950 font-medium'
                 }`}
             >
               Resources
               <ChevronDown size={16} className={`transition-transform duration-200 ${isResourcesOpen ? 'rotate-180' : ''}`} />
             </button>
+            {/* Animated Underline */}
+            <span className={`h-[2px] bg-blue-950 transition-all duration-300 rounded-full ${location.pathname.startsWith('/resources') ? 'w-full opacity-100' : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-50'
+              }`} />
 
             {isResourcesOpen && (
               <div
