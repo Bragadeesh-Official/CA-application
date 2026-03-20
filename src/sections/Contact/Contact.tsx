@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, ExternalLink } from 'lucide-react';
 import { COMPANY_EMAIL, COMPANY_PHONE, COMPANY_ADDRESS } from '../../constant';
 
 const SERVICE_ID = "service_i8xlfo4";
@@ -200,14 +200,17 @@ const Contact: React.FC = () => {
                                     </div>
                                     <div>
                                         <p className="font-semibold text-sm md:text-base !text-white" style={{ color: 'white' }}>Visit Us</p>
+                                        <p className="text-sm md:text-base !text-white opacity-90 leading-relaxed mb-3" style={{ color: 'white' }}>
+                                            {COMPANY_ADDRESS}
+                                        </p>
                                         <a
                                             href="https://www.google.com/maps/place/T+NAGARAJU+%26+Co+,+CHARTERED+ACCOUNTANTS/@11.0226698,77.0141288,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba857435f01c8b9:0x4ee20d6a9648cfe7!8m2!3d11.0226645!4d77.0167091!16s%2Fg%2F11rn89bs72?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-sm md:text-base !text-white opacity-90 leading-relaxed hover:text-blue-200 transition-colors"
-                                            style={{ color: 'white' }}
+                                            className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-xs md:text-sm font-semibold rounded-xl transition-all border border-white/10 group"
                                         >
-                                            {COMPANY_ADDRESS}
+                                            Open Google Maps
+                                            <ExternalLink size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                                         </a>
                                     </div>
                                 </div>
